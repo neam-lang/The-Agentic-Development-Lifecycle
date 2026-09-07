@@ -55,7 +55,7 @@
     <text x="250" y="400" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">blast 1</text>
     <text x="350" y="400" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">blast 2</text>
 
-    <text x="126" y="422" text-anchor="end" font-size="10.5" fill="var(--muted,#64748B)">harness high</text>
+    <text x="98" y="422" text-anchor="end" font-size="10.5" fill="var(--muted,#64748B)">harness high</text>
     <rect x="106" y="406" width="88" height="20" rx="4" fill="var(--gA-wash,#ECFDF5)"/>
     <text x="150" y="421" text-anchor="middle" font-weight="700" fill="var(--gA,#047857)">A4</text>
     <rect x="206" y="406" width="88" height="20" rx="4" fill="var(--gA-wash,#ECFDF5)"/>
@@ -63,7 +63,7 @@
     <rect x="306" y="406" width="88" height="20" rx="4" fill="var(--p1-wash,#FFF1F2)"/>
     <text x="350" y="421" text-anchor="middle" font-weight="700" fill="var(--p1,#BE123C)">A1/A0</text>
 
-    <text x="126" y="444" text-anchor="end" font-size="10.5" fill="var(--muted,#64748B)">harness low</text>
+    <text x="98" y="444" text-anchor="end" font-size="10.5" fill="var(--muted,#64748B)">harness low</text>
     <rect x="106" y="428" width="88" height="20" rx="4" fill="var(--p5-wash,#FFFBEB)"/>
     <text x="150" y="443" text-anchor="middle" font-weight="700" fill="var(--p5,#B45309)">A2</text>
     <rect x="206" y="428" width="88" height="20" rx="4" fill="var(--p5-wash,#FFFBEB)"/>
