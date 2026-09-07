@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Appendix A — AGENTS.md Reference Patterns · ADLC</title>
+<meta name="description" content="The disagreement about whether AI makes engineers faster is not a measurement problem but a structural fact about where the bottleneck moved.">
+<link rel="canonical" href="https://neam-lang.github.io/The-Agentic-Development-Lifecycle/appendices/A-agents-md-patterns.html">
+<meta name="theme-color" content="#0B1220" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta property="og:type" content="book">
+<meta property="og:site_name" content="The Agentic Development Lifecycle">
+<meta property="og:title" content="Appendix A — AGENTS.md Reference Patterns · ADLC">
+<meta property="og:description" content="The disagreement about whether AI makes engineers faster is not a measurement problem but a structural fact about where the bottleneck moved.">
+<meta property="og:url" content="https://neam-lang.github.io/The-Agentic-Development-Lifecycle/appendices/A-agents-md-patterns.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Appendix A — AGENTS.md Reference Patterns · ADLC">
+<meta name="twitter:description" content="The disagreement about whether AI makes engineers faster is not a measurement problem but a structural fact about where the bottleneck moved.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230F172A'/%3E%3Ccircle cx='16' cy='16' r='9.5' fill='none' stroke='%234338CA' stroke-width='2.4'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%230F766E'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="p2">
+<header class="masthead"><div class="wrap">
+  <a class="brand" href="../index.html"><span class="adlc">ADLC</span>The Agentic Development Lifecycle</a>
+  <nav class="mast-nav">
+    <a href="../index.html#chapters">Chapters</a>
+    <a href="../index.html#appendices">Appendices</a>
+    <a href="../index.html#paths">Reading paths</a>
+    <button id="theme-toggle" title="Toggle theme">◐</button>
+  </nav>
+</div></header>
+
+<style>
+  body.p2 { --part: var(--p2); --part-wash: var(--p2-wash); --accent: var(--p2);
+            --accent-wash: var(--p2-wash); }
+</style>
+<main class="wrap"><div class="layout">
+  <aside class="toc"><div class="toc-title">On this page</div><a class="h2" href="#a1-what-belongs-here-and-what-does-not">A.1 What belongs here, and what does not</a><a class="h2" href="#a2-the-audit">A.2 The audit</a><a class="h2" href="#a3-patterns-worth-keeping">A.3 Patterns worth keeping</a><a class="h2" href="#a4-layering-without-contradiction">A.4 Layering without contradiction</a><a class="h2" href="#a5-maintenance-rules">A.5 Maintenance rules</a><a class="h2" href="#a6-a-minimum-viable-file">A.6 A minimum viable file</a></aside>
+  <article>
+    <div class="ch-header">
+      <div class="ch-eyebrow">Appendix A</div>
+      <h1>Appendix A — AGENTS.md Reference Patterns</h1>
+      <p style="color:var(--muted);font-family:var(--mono);font-size:12.5px;margin:12px 0 0">1774 words</p>
+    </div>
+    <blockquote><p>Most context files are full of the wrong content. Not badly written — wrong <em>category</em>.</p></blockquote><p><strong>Use this appendix to:</strong> audit an existing context file, decide what belongs in it, and layer multiple files without creating contradictions nobody can detect.</p><p><strong>Established in:</strong> Chapter 6 (the budget), Chapter 7 (the quadrant), Chapter 9 §9.5 (the division of labour), Chapter 8 §8.9 (contradictions), Chapter 21 (Guide Sprawl).</p><hr><h2 id="a1-what-belongs-here-and-what-does-not">A.1 What belongs here, and what does not</h2><p>Chapter 9 §9.5 established the division of labour that governs everything else in this appendix.</p><p>A study of 328 <code>CLAUDE.md</code> files found that <strong>architectural concerns dominate</strong> their content, followed by development guidelines, project overviews, and testing <span class="grade B">[B]</span> 🔴. And architecture is a <em>structural property of the code</em> — derivable, mechanically, and kept fresh by a pipeline rather than by hand.</p><div class="table-scroll"><table><thead><tr><th>Content</th><th>Belongs in</th><th>Because</th></tr></thead><tbody><tr><td>Where things are; what calls what; module boundaries; type contracts; what tests cover what</td><td><strong>The graph</strong> (Ch 9)</td><td>Derivable, therefore durable. A hand-written version drifts silently and reads authoritative while wrong</td></tr><tr><td><strong>Why</strong> it is like this; which debt is deliberate; which convention is load-bearing; what the team is trying to achieve; when <em>not</em> to delegate</td><td><strong>The context file</strong></td><td>Not derivable at any price. Chapter 5 established it cannot be recovered by interrogating an author</td></tr></tbody></table></div><p>So the test for every line in a context file:</p><blockquote><p><strong>Could a machine derive this from the code?</strong> If yes, it does not belong here — it belongs in the graph, or it is already checkable by a sensor. If no, it is exactly what this file is for.</p></blockquote><p>Chapter 6 gives the second test, from the context budget: the marginal token can be <em>negative</em>, so add a line only if it is <strong>more relevant than the average of what is already there</strong>. That bar rises as the file improves, which is why the first few lines help enormously and later ones often do not.</p><h2 id="a2-the-audit">A.2 The audit</h2><p>Run this on an existing file before adding anything. Most teams delete 40–60% on a first pass.</p><pre class=""><code>   FOR EACH LINE OR SECTION, ASK:
+
+   1  Could a machine derive this?              → DELETE, build the sensor
+      "the auth module lives in src/auth"          or the graph entry
+      "handlers implement the Handler
+       interface"
+
+   2  Is it already enforced by a check?        → DELETE
+      "always run the formatter"                   the check is the control;
+      "use tabs, not spaces"                       the sentence is decoration
+
+   3  Is it a claim about a model's             → DELETE if the deficit
+      behaviour rather than about your             has closed. Ch 2: guides
+      project?                                     age, sensors persist.
+      "be concise", "don't hallucinate",           Drill it (Ch 8 §8.9)
+      "always use the edit tool"
+
+   4  Can nobody say why it is here?            → DELETE
+      no date, no named failure mode                Ch 21's early warning
+                                                    for Harness Theatre
+
+   5  Does it record WHY?                       → KEEP. This is the file's
+      a deliberate trade-off, a constraint          entire purpose
+      that is not obvious, a decision
+      someone would otherwise reverse</code></pre><p>Category 3 is the one people resist deleting, and Chapter 2 is the reason to: a rule compensating for a model deficit that three generations have since closed is not neutral. It consumes the scarce budget, and worse, it teaches every reader that the file's contents are decorative.</p><h2 id="a3-patterns-worth-keeping">A.3 Patterns worth keeping</h2><p>Annotated. Each of these records something underivable.</p><p><strong>The deliberate trade-off.</strong></p><pre class=""><code>## Known trade-offs
+
+- `orders/legacy_pricing.py` duplicates logic in `pricing/`. This is
+  deliberate until the Q3 migration — the two diverge in rounding and
+  merging them broke invoices in 2024. Do not "clean this up".
+  Added 2026-02-11 · reason: recurring unwanted refactor · review Q4</code></pre><p>Records a decision an agent would otherwise reverse, with the incident that motivated it. Chapter 4's cost gradient predicts an agent will keep trying to fix this; the note is what stops it.</p><p><strong>The load-bearing convention.</strong></p><pre class=""><code>## Conventions that are NOT style
+
+- Every handler returns `Result`, never raises. This is load-bearing:
+  the retry middleware distinguishes them and raising bypasses retry.
+- Field order in `wire.py` structs is protocol-significant.
+
+(Everything else about style is enforced by the formatter. If it is not
+in this list and not enforced, it is habit and you may ignore it.)</code></pre><p>The parenthetical is the valuable half. Chapter 5 established that agents cannot distinguish deliberate convention from habit; this states the distinction explicitly and bounds it.</p><p><strong>The non-goal.</strong></p><pre class=""><code>## Out of scope for agents in this repo
+
+- Do not modify `migrations/`. Ask. Blast radius: irreversible (Ch 13 B2).
+- Do not add dependencies. Open an issue instead.</code></pre><p>⚠️ <strong>These are guides, so they are belief-based</strong> (Chapter 11). They inform; they do not enforce. If the consequence is severe, revoke the capability instead — no write access to <code>migrations/</code>, no network egress for package installs. A sentence here is a reminder, not a control.</p><p><strong>The escalation instruction.</strong></p><pre class=""><code>## When to stop and ask
+
+- The change requires touching more than one bounded context.
+- You cannot enumerate the callers of a symbol you are changing.
+- A test that was passing now fails and you did not intend to change it.</code></pre><p>Chapter 14's <em>escalation quality</em> metric depends on the agent knowing when to stop. This is one of the few things a context file does that nothing else can.</p><p><strong>The pointer, not the payload.</strong></p><pre class=""><code>## Architecture
+
+See the generated dependency map: `make graph` or `docs/graph.json`.
+Layering is enforced by `tests/structural/test_layers.py` — if you are
+unsure whether an import is allowed, run it.</code></pre><p>Chapter 6's progressive disclosure. Three lines replacing three pages, and unlike the three pages it cannot go stale.</p><h2 id="a4-layering-without-contradiction">A.4 Layering without contradiction</h2><p>Chapter 7 found <strong>4,768 context files</strong> across 2,586 repositories, with <code>CLAUDE.md</code> pointing to <code>AGENTS.md</code> in <strong>301</strong> cases <span class="grade A">[A]</span>. Layering is normal. Layering <em>plus no removal plus no detector</em> is Chapter 21's Guide Sprawl.</p><p>Galster's authors draw the practical implication, and it is the right one:</p><figure class="diagram"><svg viewBox="0 0 900 490" xmlns="http://www.w3.org/2000/svg" font-family="ui-sans-serif,system-ui,-apple-system,sans-serif" role="img"><defs><marker id="a-bad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--p1,#BE123C)"/></marker><marker id="a-cool" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--p3,#0F766E)"/></marker><marker id="a-gA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--gA,#047857)"/></marker><marker id="a-gB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--gB,#0E7490)"/></marker><marker id="a-gC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--gC,#B45309)"/></marker><marker id="a-gD" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--gD,#64748B)"/></marker><marker id="a-info" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--p2,#4338CA)"/></marker><marker id="a-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--ink,#0F172A)"/></marker><marker id="a-mind" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--p4,#7C3AED)"/></marker><marker id="a-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--muted,#64748B)"/></marker><marker id="a-neutral" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--line,#E2E8F0)"/></marker><marker id="a-ok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--gA,#047857)"/></marker><marker id="a-p1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--p1,#BE123C)"/></marker><marker id="a-p2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--p2,#4338CA)"/></marker><marker id="a-p3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--p3,#0F766E)"/></marker><marker id="a-p4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--p4,#7C3AED)"/></marker><marker id="a-p5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--p5,#B45309)"/></marker><marker id="a-warn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--p5,#B45309)"/></marker><marker id="a-faint" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--line,#E2E8F0)"/></marker><marker id="a-faint" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--faint,#94A3B8)"/></marker></defs><text x="0" y="12" font-size="10.5" letter-spacing="1.5" font-family="ui-monospace,monospace" fill="var(--faint,#94A3B8)">ONE SOURCE PER CONCERN, WITH THIN ADAPTERS</text><rect x="0" y="30" width="900" height="95" rx="9" fill="var(--p2-wash,#EEF2FF)" stroke="var(--p2,#4338CA)" stroke-width="2.4"/><text x="13" y="57" font-size="13"  fill="var(--p2,#4338CA)" text-anchor="start" font-weight="660"  >AGENTS.md — the shared core</text><text x="13" y="78" font-size="11.2"  fill="var(--muted,#64748B)" text-anchor="start"   >ALL substantive content. Tool-agnostic.</text><text x="13" y="93" font-size="11.2"  fill="var(--muted,#64748B)" text-anchor="start"   >&gt;60,000 projects use this format. Donated to the Linux Foundation's</text><text x="13" y="108" font-size="11.2"  fill="var(--muted,#64748B)" text-anchor="start"   >Agentic AI Foundation in December 2025.</text><text x="884" y="56" font-size="13" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="var(--p2,#4338CA)" text-anchor="end" font-weight="660"  >canonical</text><rect x="0" y="135" width="900" height="64" rx="9" fill="var(--p3-wash,#F0FDFA)" stroke="var(--p3,#0F766E)" stroke-width="1.5"/><text x="13" y="162" font-size="13"  fill="var(--p3,#0F766E)" text-anchor="start" font-weight="660"  >CLAUDE.md</text><text x="13" y="183" font-size="11.2"  fill="var(--muted,#64748B)" text-anchor="start"   >Points at AGENTS.md. Contains ONLY what is genuinely Claude-specific.</text><text x="884" y="161" font-size="13" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="var(--p3,#0F766E)" text-anchor="end" font-weight="660"  >adapter</text><rect x="0" y="209" width="900" height="64" rx="9" fill="var(--p3-wash,#F0FDFA)" stroke="var(--p3,#0F766E)" stroke-width="1.5"/><text x="13" y="236" font-size="13"  fill="var(--p3,#0F766E)" text-anchor="start" font-weight="660"  >.github/copilot-instructions.md</text><text x="13" y="257" font-size="11.2"  fill="var(--muted,#64748B)" text-anchor="start"   >Points at AGENTS.md.</text><text x="884" y="235" font-size="13" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="var(--p3,#0F766E)" text-anchor="end" font-weight="660"  >adapter</text><rect x="0" y="283" width="900" height="64" rx="9" fill="var(--p3-wash,#F0FDFA)" stroke="var(--p3,#0F766E)" stroke-width="1.5"/><text x="13" y="310" font-size="13"  fill="var(--p3,#0F766E)" text-anchor="start" font-weight="660"  >.cursor/rules/</text><text x="13" y="331" font-size="11.2"  fill="var(--muted,#64748B)" text-anchor="start"   >Points at AGENTS.md.</text><text x="884" y="309" font-size="13" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" fill="var(--p3,#0F766E)" text-anchor="end" font-weight="660"  >adapter</text><rect x="0" y="357" width="900" height="95" rx="9" fill="var(--wash,#F8FAFC)" stroke="var(--line,#E2E8F0)" stroke-width="1.5" stroke-dasharray="6 5"/><text x="13" y="384" font-size="13"  fill="var(--ink-soft,#334155)" text-anchor="start" font-weight="660"  >What a whole adapter should look like</text><text x="13" y="405" font-size="11.2"  fill="var(--muted,#64748B)" text-anchor="start"   ># Claude Code</text><text x="13" y="420" font-size="11.2"  fill="var(--muted,#64748B)" text-anchor="start"   >Read @AGENTS.md before answering. It is authoritative.</text><text x="13" y="436" font-size="11.2"  fill="var(--muted,#64748B)" text-anchor="start"   >Claude-specific: use the make check target, not npm run lint.</text><text x="0" y="474" font-size="11.5"  fill="var(--muted,#64748B)" text-anchor="start"  font-style="italic" >Three lines. If an adapter grows past that, the content belongs in the core.</text></svg><figcaption>One source per concern. Everything substantive lives in AGENTS.md; every tool-specific file is a thin adapter that points at it.</figcaption></figure><p>Two rules that prevent the failure:</p><p><strong>Substantive content lives in exactly one file.</strong> If a statement appears in two files it will eventually appear differently in two files, and nothing will tell you.</p><p><strong>Never let the agent resolve a contradiction.</strong> Chapter 8 §8.9: delegating that means accepting a silent, unlogged, per-invocation decision about which of your stated intentions wins. A contradiction is a <strong>defect in the harness</strong> and belongs to whoever owns it.</p><p>And the honest gap, from Chapter 21 and Chapter 27: <strong>there is no contradiction detector.</strong> Both Galster's authors and Böckeler name this independently as a missing tool. Until one exists, the single-source discipline above is the only defence, and it is a convention rather than a control.</p><h2 id="a5-maintenance-rules">A.5 Maintenance rules</h2><p>Five, each traceable to a chapter.</p><p><strong>1. Every guide carries a date and the failure it was added for.</strong> Chapter 12's fourth prohibition. Undated guides cannot be pruned, so they accumulate. A one-line HTML comment is enough:</p><pre class=""><code>&lt;!-- added 2026-03-04 · failure: agent reverted the pricing duplication
+     three times · retire when the Q3 migration lands --&gt;</code></pre><p><strong>2. Edit, never regenerate.</strong> Chapter 6 §6.7: contexts <em>collapse</em>. Repeated wholesale rewriting degrades toward genericity, dropping exactly the specific, hard-won detail that looks like noise to a summariser. A regenerated <code>AGENTS.md</code> will read better and will have quietly deleted the three lines doing all the work.</p><p><strong>3. Prune on a schedule.</strong> If nothing is ever removed, dilution is where you end up by default.</p><p><strong>4. Do not use this file to enforce anything that matters.</strong> Chapter 11: guides are belief-based and defeated by injection. Chapter 10 §10.7's ordering — make it impossible, then detect it deterministically, then judge it, then assert it. This file is tier four.</p><p><strong>5. Measure whether it is working.</strong> Chapter 14's context efficiency — tokens per accepted change — moves in the right direction when a context file is well curated. It is the only feedback available on a file whose failures are otherwise silent.</p><h2 id="a6-a-minimum-viable-file">A.6 A minimum viable file</h2><p>Everything above, applied. This is what a good context file looks like: short, underivable, dated.</p><pre class=""><code># AGENTS.md
+
+## What this service does
+One paragraph. Why it exists, who depends on it, what it must never do.
+
+## Architecture
+Generated: `make graph`. Layering enforced by `tests/structural/`.
+&lt;!-- deliberately NOT described here — Ch 9 §9.5 --&gt;
+
+## Conventions that are NOT style
+- Handlers return `Result`, never raise. Load-bearing: retry middleware.
+- Field order in `wire.py` is protocol-significant.
+Everything else is enforced by the formatter and may be ignored.
+
+## Known trade-offs
+- `orders/legacy_pricing.py` duplicates `pricing/` deliberately until
+  the Q3 migration. Merging them broke invoices in 2024.
+  &lt;!-- added 2026-02-11 · failure: recurring unwanted refactor · review Q4 --&gt;
+
+## When to stop and ask
+- The change spans more than one bounded context.
+- You cannot enumerate the callers of a symbol you are changing.
+
+## Out of scope
+- `migrations/` — ask first.
+  &lt;!-- NOTE: also enforced by revoked write access. This line is a
+       reminder, not the control. --&gt;</code></pre><p>Roughly forty lines. Chapter 7's evidence says the median repository has one or two context files and little else; the goal is not to make this file bigger but to make every line in it underivable.</p><hr><div class="callout sources"><div class="callout-h">Sources</div><ul><li>Galster, Mohsenimofidi, Lulla, Abubakar, Treude, Baltes. arXiv <strong>2602.14690</strong>, AIware '26 <span class="grade A">[A]</span> ✅ — 4,768 context files across 2,586 repositories; CLAUDE.md → AGENTS.md <strong>301</strong> references; the hierarchical-with-adapters recommendation; the call for contradiction-detection research</li><li>Santos, Costa, Montandon, Valente. arXiv <strong>2511.09268</strong> <span class="grade B">[B]</span> 🔴 — 328 <code>CLAUDE.md</code> files, architectural concerns dominate. §A.1's premise; retrieve before print</li><li><strong>agents.md</strong> and the Linux Foundation Agentic AI Foundation, December 2025 <span class="grade D">[D]</span> ✅ — &gt;60,000 projects; tool-agnostic standard</li><li>Chatlatanagulchai et al. arXiv <strong>2511.12884</strong> <span class="grade B">[B]</span> 🔴 — context files maintained through small frequent changes, which is rule 2 observed in the wild</li><li>Zhang, Qizheng; et al. <strong>Agentic Context Engineering.</strong> arXiv <strong>2510.04618</strong> <span class="grade B">[B]</span> 🔴 — context collapse and brevity bias, the mechanism behind rule 2</li><li>Böckeler <span class="grade D">[D]</span> ✅ — the coherence question, posed independently of Galster</li></ul></div>
+    <div class="ch-nav"><a href="../chapters/27-open-problems.html"><span class="dir">← Previous</span>Chapter 27 — Open Problems: An Invitation</a><a class="next" href="B-harness-template-starter-kit.html"><span class="dir">Next →</span>Appendix B — Harness Template Starter Kit</a></div>
+  </article>
+</div></main>
+<footer><div class="wrap">
+  <p><strong>The Agentic Development Lifecycle</strong> — delegated execution under human supervision.<br>
+  Every empirical claim is graded <span class="grade A">[A]</span>
+  <span class="grade B">[B]</span> <span class="grade C">[C]</span>
+  <span class="grade D">[D]</span> and resolves to the citation ledger.</p>
+</div></footer>
+<script>
+(function(){
+  var k='adlc-theme', s=localStorage.getItem(k);
+  if(s) document.documentElement.setAttribute('data-theme',s);
+  var b=document.getElementById('theme-toggle');
+  b&&b.addEventListener('click',function(){
+    var cur=document.documentElement.getAttribute('data-theme');
+    var next = cur==='dark' ? 'light' : cur==='light' ? 'dark'
+      : (window.matchMedia('(prefers-color-scheme: dark)').matches?'light':'dark');
+    document.documentElement.setAttribute('data-theme',next);
+    localStorage.setItem(k,next);
+  });
+})();
+</script>
+</body></html>

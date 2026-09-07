@@ -1,0 +1,82 @@
+<svg viewBox="0 0 940 452" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="The autonomy ladder A0 to A4 and the ceiling matrix set by harnessability and blast radius."
+     font-family="ui-sans-serif, system-ui, -apple-system, sans-serif">
+
+  <text x="20" y="24" font-size="11" letter-spacing="1.6" font-family="ui-monospace, monospace"
+        fill="var(--faint,#94A3B8)">EACH LEVEL IS A SET OF REVOKED CAPABILITIES — NOT A SET OF INSTRUCTIONS</text>
+
+  <!-- the steps -->
+  <g>
+    <rect x="20" y="292" width="150" height="52" rx="9" fill="var(--p2-wash,#EEF2FF)" stroke="var(--p2,#4338CA)" stroke-width="1.6"/>
+    <text x="34" y="314" font-size="15" font-weight="760" font-family="ui-monospace, monospace" fill="var(--p2,#4338CA)">A0</text>
+    <text x="66" y="314" font-size="13" font-weight="640" fill="var(--ink,#0F172A)">Assisted</text>
+    <text x="34" y="333" font-size="10.5" fill="var(--muted,#64748B)">human authors</text>
+
+    <rect x="182" y="238" width="150" height="52" rx="9" fill="var(--p2-wash,#EEF2FF)" stroke="var(--p2,#4338CA)" stroke-width="1.6"/>
+    <text x="196" y="260" font-size="15" font-weight="760" font-family="ui-monospace, monospace" fill="var(--p2,#4338CA)">A1</text>
+    <text x="228" y="260" font-size="13" font-weight="640" fill="var(--ink,#0F172A)">Supervised</text>
+    <text x="196" y="279" font-size="10.5" fill="var(--muted,#64748B)">approval each step</text>
+
+    <rect x="344" y="184" width="150" height="52" rx="9" fill="var(--p5-wash,#FFFBEB)" stroke="var(--p5,#B45309)" stroke-width="2.2"/>
+    <text x="358" y="206" font-size="15" font-weight="760" font-family="ui-monospace, monospace" fill="var(--p5,#B45309)">A2</text>
+    <text x="390" y="206" font-size="13" font-weight="640" fill="var(--ink,#0F172A)">Delegated</text>
+    <text x="358" y="225" font-size="10.5" fill="var(--p5,#B45309)">where the work is</text>
+
+    <rect x="506" y="130" width="150" height="52" rx="9" fill="var(--wash,#F8FAFC)" stroke="var(--faint,#94A3B8)" stroke-width="1.6" stroke-dasharray="5 4"/>
+    <text x="520" y="152" font-size="15" font-weight="760" font-family="ui-monospace, monospace" fill="var(--muted,#64748B)">A3</text>
+    <text x="552" y="152" font-size="13" font-weight="640" fill="var(--muted,#64748B)">Bounded-auto</text>
+    <text x="520" y="171" font-size="10.5" fill="var(--muted,#64748B)">gated by sensors</text>
+
+    <rect x="668" y="76" width="150" height="52" rx="9" fill="var(--wash,#F8FAFC)" stroke="var(--faint,#94A3B8)" stroke-width="1.6" stroke-dasharray="5 4"/>
+    <text x="682" y="98" font-size="15" font-weight="760" font-family="ui-monospace, monospace" fill="var(--muted,#64748B)">A4</text>
+    <text x="714" y="98" font-size="13" font-weight="640" fill="var(--muted,#64748B)">Continuous</text>
+    <text x="682" y="117" font-size="10.5" fill="var(--muted,#64748B)">runs unprompted</text>
+  </g>
+
+  <!-- the closed gate -->
+  <path d="M500 60 L500 300" stroke="var(--p1,#BE123C)" stroke-width="2.4" stroke-dasharray="8 6" opacity=".75"/>
+  <rect x="512" y="290" width="404" height="62" rx="10"
+        fill="var(--p1-wash,#FFF1F2)" stroke="var(--p1,#BE123C)" stroke-width="1.8"/>
+  <text x="530" y="312" font-size="12.5" font-weight="700" fill="var(--p1,#BE123C)">
+    Closed for ordinary feature work</text>
+  <text x="530" y="330" font-size="11.5" fill="var(--muted,#64748B)">
+    The behaviour harness is unsolved, so supervision cannot fall.</text>
+  <text x="530" y="346" font-size="11.5" fill="var(--muted,#64748B)">
+    Reachable today only via near-zero blast radius</text>
+  <text x="530" y="361" font-size="11.5" fill="var(--muted,#64748B)">
+    or mechanical acceptance.</text>
+
+  <!-- ceiling matrix -->
+  <text x="20" y="376" font-size="11" letter-spacing="1.6" font-family="ui-monospace, monospace"
+        fill="var(--faint,#94A3B8)">CEILING = HARNESSABILITY × BLAST RADIUS — NEVER ENTHUSIASM</text>
+
+  <g font-size="12" font-family="ui-monospace, monospace">
+    <text x="150" y="400" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">blast 0</text>
+    <text x="250" y="400" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">blast 1</text>
+    <text x="350" y="400" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">blast 2</text>
+
+    <text x="126" y="422" text-anchor="end" font-size="10.5" fill="var(--muted,#64748B)">harness high</text>
+    <rect x="106" y="406" width="88" height="20" rx="4" fill="var(--gA-wash,#ECFDF5)"/>
+    <text x="150" y="421" text-anchor="middle" font-weight="700" fill="var(--gA,#047857)">A4</text>
+    <rect x="206" y="406" width="88" height="20" rx="4" fill="var(--gA-wash,#ECFDF5)"/>
+    <text x="250" y="421" text-anchor="middle" font-weight="700" fill="var(--gA,#047857)">A3</text>
+    <rect x="306" y="406" width="88" height="20" rx="4" fill="var(--p1-wash,#FFF1F2)"/>
+    <text x="350" y="421" text-anchor="middle" font-weight="700" fill="var(--p1,#BE123C)">A1/A0</text>
+
+    <text x="126" y="444" text-anchor="end" font-size="10.5" fill="var(--muted,#64748B)">harness low</text>
+    <rect x="106" y="428" width="88" height="20" rx="4" fill="var(--p5-wash,#FFFBEB)"/>
+    <text x="150" y="443" text-anchor="middle" font-weight="700" fill="var(--p5,#B45309)">A2</text>
+    <rect x="206" y="428" width="88" height="20" rx="4" fill="var(--p5-wash,#FFFBEB)"/>
+    <text x="250" y="443" text-anchor="middle" font-weight="700" fill="var(--p5,#B45309)">A1</text>
+    <rect x="306" y="428" width="88" height="20" rx="4" fill="var(--p1-wash,#FFF1F2)"/>
+    <text x="350" y="443" text-anchor="middle" font-weight="700" fill="var(--p1,#BE123C)">A0</text>
+  </g>
+
+  <rect x="424" y="382" width="492" height="66" rx="10"
+        fill="var(--wash,#F8FAFC)" stroke="var(--line,#E2E8F0)" stroke-width="1.4"/>
+  <text x="444" y="404" font-size="12.5" font-weight="700" fill="var(--ink,#0F172A)">Blast radius vetoes.</text>
+  <text x="444" y="422" font-size="11.5" fill="var(--muted,#64748B)">
+    No amount of harness quality makes a severe-blast-radius change eligible</text>
+  <text x="444" y="438" font-size="11.5" fill="var(--muted,#64748B)">
+    for autonomy. You reduce the blast radius instead — or accept the ceiling.</text>
+</svg>

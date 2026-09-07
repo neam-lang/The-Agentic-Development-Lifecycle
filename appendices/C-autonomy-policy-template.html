@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Appendix C — Autonomy Policy Template · ADLC</title>
+<meta name="description" content="The disagreement about whether AI makes engineers faster is not a measurement problem but a structural fact about where the bottleneck moved.">
+<link rel="canonical" href="https://neam-lang.github.io/The-Agentic-Development-Lifecycle/appendices/C-autonomy-policy-template.html">
+<meta name="theme-color" content="#0B1220" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta property="og:type" content="book">
+<meta property="og:site_name" content="The Agentic Development Lifecycle">
+<meta property="og:title" content="Appendix C — Autonomy Policy Template · ADLC">
+<meta property="og:description" content="The disagreement about whether AI makes engineers faster is not a measurement problem but a structural fact about where the bottleneck moved.">
+<meta property="og:url" content="https://neam-lang.github.io/The-Agentic-Development-Lifecycle/appendices/C-autonomy-policy-template.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Appendix C — Autonomy Policy Template · ADLC">
+<meta name="twitter:description" content="The disagreement about whether AI makes engineers faster is not a measurement problem but a structural fact about where the bottleneck moved.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230F172A'/%3E%3Ccircle cx='16' cy='16' r='9.5' fill='none' stroke='%234338CA' stroke-width='2.4'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%230F766E'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="p2">
+<header class="masthead"><div class="wrap">
+  <a class="brand" href="../index.html"><span class="adlc">ADLC</span>The Agentic Development Lifecycle</a>
+  <nav class="mast-nav">
+    <a href="../index.html#chapters">Chapters</a>
+    <a href="../index.html#appendices">Appendices</a>
+    <a href="../index.html#paths">Reading paths</a>
+    <button id="theme-toggle" title="Toggle theme">◐</button>
+  </nav>
+</div></header>
+
+<style>
+  body.p2 { --part: var(--p2); --part-wash: var(--p2-wash); --accent: var(--p2);
+            --accent-wash: var(--p2-wash); }
+</style>
+<main class="wrap"><div class="layout">
+  <aside class="toc"><div class="toc-title">On this page</div><a class="h2" href="#c1-why-this-document-exists">C.1 Why this document exists</a><a class="h2" href="#c2-the-template">C.2 The template</a><a class="h2" href="#c3-worked-example">C.3 Worked example</a><a class="h3" href="#class-dependency-updates">Class: dependency updates</a><a class="h3" href="#class-changes-to-the-payment-path">Class: changes to the payment path</a><a class="h2" href="#c4-how-this-fails">C.4 How this fails</a></aside>
+  <article>
+    <div class="ch-header">
+      <div class="ch-eyebrow">Appendix C</div>
+      <h1>Appendix C — Autonomy Policy Template</h1>
+      <p style="color:var(--muted);font-family:var(--mono);font-size:12.5px;margin:12px 0 0">1722 words</p>
+    </div>
+    <blockquote><p>An autonomy level enforced by instruction is not an autonomy level. It is a hope with a number attached.</p></blockquote><p><strong>Use this appendix to:</strong> write the artefact that makes an autonomy decision auditable — the thing Chapter 11 §11.9 argued accountability should attach to, instead of to an individual approval.</p><p><strong>Established in:</strong> Chapter 13 (the ladder, the scoring instrument, revocations), Chapter 11 §11.9 (accountability), Chapter 16 §16.3 (the named owner), Chapter 21 (Autonomy Creep).</p><hr><h2 id="c1-why-this-document-exists">C.1 Why this document exists</h2><p>Chapter 11 established that accountability once travelled with <strong>authorship</strong>. Authorship is now machine, so responsibility defaults to <strong>approval</strong> — precisely the gate Chapter 5 showed had collapsed. The result is that responsibility sits on the weakest remaining signal.</p><p>The way out is to attach accountability to the decision that actually determines outcomes: <em>this class of change may run at this level of authority</em>. That decision has to <strong>exist as a document</strong> for anyone to be accountable for it.</p><p>Three properties make it real rather than decorative:</p><p><strong>It is per class of work, not per team.</strong> The same agent may run at A4 on dependency bumps and A0 on the payment path, in the same repository, in the same hour.</p><p><strong>Every level is implemented as revoked capabilities.</strong> Chapter 13 §13.3. If the boundary lives in a context file, it is a belief-based control and Chapter 11 showed what those are worth under injection — or under ordinary misunderstanding.</p><p><strong>The downgrade trigger is written while everyone is calm.</strong> Chapter 13 §13.9: a level granted with no stated conditions for revocation will never be revoked, because after an incident the conversation is about the incident rather than about whether the grant was sound.</p><hr><h2 id="c2-the-template">C.2 The template</h2><p>Copy, fill, commit next to the code it governs. One file per class of work, or one file with a section per class.</p><pre class=""><code># AUTONOMY POLICY — &lt;class of work&gt;
+
+Owner:            &lt;name&gt;            &lt;!-- Ch 16 §16.3: harness owner --&gt;
+Approved by:      &lt;name, role&gt;
+Date:             &lt;YYYY-MM-DD&gt;
+Review date:      &lt;YYYY-MM-DD&gt;      &lt;!-- 6 months maximum --&gt;
+Applies to:       &lt;repository / path / change type&gt;
+
+---
+
+## 1. Class of work
+
+&lt;One paragraph. What kind of change this covers, and — importantly —
+what it does NOT cover. Ambiguity here is where Autonomy Creep enters.&gt;
+
+Examples in scope:      &lt;2–3 concrete examples&gt;
+Explicitly out of scope: &lt;2–3 concrete examples, with the class they
+                          belong to instead&gt;
+
+---
+
+## 2. Harnessability score            &lt;!-- Ch 13 §13.5 --&gt;
+
+| # | Question | 0 / 1 / 2 | Evidence |
+|---|---|---|---|
+| H1 | Does the compiler reject a wrong-shaped change? | | |
+| H2 | Is there a human-authored acceptance set the agent cannot see? | | |
+| H3 | Does a forbidden import or layer violation fail the build? | | |
+| H4 | Do checks run inside the edit cycle and REFUSE bad edits? | | |
+| H5 | Can every caller of a symbol be enumerated reliably? | | |
+| H6 | Has any control been shown to fire by deliberately producing its failure? | | |
+
+**Total: __ / 12**   →   band:  low (0–4) · medium (5–8) · high (9–12)
+
+&lt;!-- H2 and H4 carry the most weight (Ch 13 §13.5). If both are 0,
+     treat the band as low regardless of the total. --&gt;
+
+---
+
+## 3. Blast radius                    &lt;!-- Ch 13 §13.5 --&gt;
+
+| # | Question | 0 / 1 / 2 | Evidence |
+|---|---|---|---|
+| B1 | Can the change path reach credentials or tokens? | | |
+| B2 | Can it mutate production data irreversibly? | | |
+| B3 | How fast can this be rolled back? | | |
+| B4 | How many call sites depend on what is changing? | | |
+| B5 | Is this in scope for an audit or compliance regime? | | |
+| B6 | Does the change span more than one bounded context? | | |
+
+**MAXIMUM (not sum): __**
+
+&lt;!-- Blast radius does not average. Averaging hides the term that
+     dominates the loss. --&gt;
+
+---
+
+## 4. Ceiling                          &lt;!-- Ch 13 Figure 13.2 --&gt;
+
+|                    | blast 0 | blast 1 | blast 2 |
+|--------------------|---------|---------|---------|
+| harnessability high | A4     | A3      | A1 / A0 |
+| harnessability med  | A3     | A2      | A0      |
+| harnessability low  | A2     | A1      | A0      |
+
+**Computed ceiling:  A__**
+**Operating at:      A__**   &lt;!-- may be below the ceiling, never above --&gt;
+
+Reason for operating below ceiling, if applicable:
+&lt;e.g. "A1 for developmental reasons, not risk reasons" — Ch 20 §20.5&gt;
+
+---
+
+## 5. Enforcement — capabilities REVOKED   &lt;!-- Ch 13 §13.3 --&gt;
+
+&lt;!-- This section is the policy. Everything above is the reasoning.
+     A level not listed here as a revocation is not in force. --&gt;
+
+| Capability | Revoked? | How it is enforced |
+|---|---|---|
+| Merge to protected branch | | branch protection rule |
+| Push to shared branch | | branch protection rule |
+| Read `tests/acceptance/**` | | agent deny-list |
+| Read secrets / `.env` | | not present in process environment |
+| Network egress | | sandbox policy, deny by default |
+| Modify `.harness/**` | | CODEOWNERS + deny-list |
+| Modify this policy | | CODEOWNERS |
+| Initiate work unprompted | | no scheduler entry |
+
+&lt;!-- The last two rows matter most. An agent that can edit the harness
+     governing it, or its own autonomy level, has no level at all. --&gt;
+
+---
+
+## 6. Downgrade triggers               &lt;!-- write these while calm --&gt;
+
+This policy drops to A__ automatically if any of the following occurs:
+
+- [ ] A change in this class causes a production incident of severity __ or above
+- [ ] The held-out acceptance set is found to have been visible to the agent
+- [ ] A scheduled drill shows a control in §5 failing to fire
+- [ ] Rework rate for this class exceeds __% over a 14-day window
+- [ ] The harness owner position is vacant for more than __ weeks
+- [ ] &lt;domain-specific trigger&gt;
+
+Who executes the downgrade: &lt;name / role&gt;
+&lt;!-- If nobody is named, the trigger will not fire. --&gt;
+
+---
+
+## 7. Audit record
+
+| Date | Change | Reason | By |
+|---|---|---|---|
+| | initial grant | | |
+
+&lt;!-- Ch 11 §11.9: the evidentiary problem — proving after an incident
+     WHICH controls were in force at the time — is unsolved. This table
+     is a partial substitute and it is better than nothing. --&gt;</code></pre><hr><h2 id="c3-worked-example">C.3 Worked example</h2><p>Filled in, for the two classes most organisations should write first — because they sit at opposite ends and make the instrument's point.</p><h3 id="class-dependency-updates">Class: dependency updates</h3><pre class=""><code>Harnessability:  H1 2 · H2 1 · H3 1 · H4 2 · H5 1 · H6 1  = 8  (medium)
+Blast radius:    B1 0 · B2 0 · B3 0 · B4 1 · B5 0 · B6 0  = max 1
+Ceiling:         A3          Operating at: A4  ← ABOVE CEILING</code></pre><p>⚠️ This is the most common real finding, and it is not a failure of nerve — it is Chapter 23's fourth crossing signal. The dependency bot <strong>has a schedule</strong>, which silently promoted it to A4 without anyone assessing whether it qualified. Either reduce B4 (pin, stage, canary) to reach blast 0, or drop the schedule.</p><h3 id="class-changes-to-the-payment-path">Class: changes to the payment path</h3><pre class=""><code>Harnessability:  H1 2 · H2 2 · H3 2 · H4 2 · H5 2 · H6 1  = 11 (high)
+Blast radius:    B1 2 · B2 2 · B3 1 · B4 2 · B5 2 · B6 1  = max 2
+Ceiling:         A0 / A1     Operating at: A2  ← ABOVE CEILING</code></pre><p>Note what this shows. Harnessability is <strong>excellent</strong> — this is the best-instrumented code in the organisation. And the ceiling is still A0/A1, because <strong>blast radius vetoes</strong> (Chapter 13 §13.4). No amount of harness quality makes a severe-blast-radius change eligible for autonomy; you reduce the blast radius instead, or you accept the ceiling.</p><p>Together the two examples make the instrument's real payoff visible, and it is the one Chapter 13 §13.5 predicted: a uniform "A2 everywhere" policy is <strong>simultaneously above ceiling on the payment path and below it on dependency updates.</strong> The gain from scoring is not speed — it is reallocation of the scarce resource.</p><hr><h2 id="c4-how-this-fails">C.4 How this fails</h2><p>Four failure modes, each from Chapter 21, each with its early sign.</p><p><strong>The policy is written and the capabilities are not revoked.</strong> §5 is empty or aspirational. Early sign: you cannot name the mechanism in the "how it is enforced" column. This is the most common failure and it makes the whole document decorative.</p><p><strong>No downgrade trigger.</strong> §6 left blank because nothing had gone wrong yet. Early sign: the review date passes and the policy is renewed without discussion.</p><p><strong>Scope ambiguity.</strong> §1 says "backend changes". Early sign: two people disagree about whether a change is in this class, and resolve it in favour of the higher level. This is Autonomy Creep's entry point.</p><p><strong>Nobody executes.</strong> §6's triggers fire and nothing happens because the named person moved teams. Early sign: the owner field has not been updated in two reorganisations.</p><p><strong>Test it the way Chapter 13 §13.9 prescribes:</strong> attempt to exceed the level. Ask an A2 agent to merge. If it can, you are not at A2, whatever this document says — and that is the only verification that means anything.</p><hr><div class="callout sources"><div class="callout-h">Sources</div><ul><li>Chapter 13 §13.3 (levels as revoked capabilities), §13.4 (blast radius vetoes), §13.5 (the scoring instrument and ceiling matrix), §13.9 (creep and the downgrade trigger)</li><li>Chapter 11 §11.9 <span class="grade C">[C]</span> ✅ — accountability follows the autonomy decision; the unsolved evidentiary problem of proving which controls were in force</li><li>Chapter 16 §16.3 — the named harness owner</li><li>Chapter 23 §23.3 — a schedule is a crossing, the mechanism behind C.3's first example</li><li>Chapter 20 §20.5 — operating below ceiling for developmental reasons</li><li><strong>CVE-2026-22708</strong> <span class="grade C">[C]</span> ✅ — why §5 scopes effects rather than names: an allowlist that validated command names was bypassed by changing what a name resolved to</li></ul></div>
+    <div class="ch-nav"><a href="B-harness-template-starter-kit.html"><span class="dir">← Previous</span>Appendix B — Harness Template Starter Kit</a><a class="next" href="D-metrics-instrumentation-guide.html"><span class="dir">Next →</span>Appendix D — Metrics Instrumentation Guide</a></div>
+  </article>
+</div></main>
+<footer><div class="wrap">
+  <p><strong>The Agentic Development Lifecycle</strong> — delegated execution under human supervision.<br>
+  Every empirical claim is graded <span class="grade A">[A]</span>
+  <span class="grade B">[B]</span> <span class="grade C">[C]</span>
+  <span class="grade D">[D]</span> and resolves to the citation ledger.</p>
+</div></footer>
+<script>
+(function(){
+  var k='adlc-theme', s=localStorage.getItem(k);
+  if(s) document.documentElement.setAttribute('data-theme',s);
+  var b=document.getElementById('theme-toggle');
+  b&&b.addEventListener('click',function(){
+    var cur=document.documentElement.getAttribute('data-theme');
+    var next = cur==='dark' ? 'light' : cur==='light' ? 'dark'
+      : (window.matchMedia('(prefers-color-scheme: dark)').matches?'light':'dark');
+    document.documentElement.setAttribute('data-theme',next);
+    localStorage.setItem(k,next);
+  });
+})();
+</script>
+</body></html>

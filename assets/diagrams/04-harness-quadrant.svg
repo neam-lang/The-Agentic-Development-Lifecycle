@@ -1,0 +1,79 @@
+<svg viewBox="0 0 940 452" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="Guides versus sensors, computational versus inferential, with adoption data showing context files at 90.6% and hooks at 0.9 to 3.2%."
+     font-family="ui-sans-serif, system-ui, -apple-system, sans-serif">
+
+  <!-- column headers -->
+  <text x="330" y="30" text-anchor="middle" font-size="13" font-weight="720"
+        fill="var(--p4,#7C3AED)" letter-spacing=".05em">GUIDES — feedforward</text>
+  <text x="330" y="47" text-anchor="middle" font-size="11.5" fill="var(--muted,#64748B)">act before generation · prevent</text>
+  <text x="700" y="30" text-anchor="middle" font-size="13" font-weight="720"
+        fill="var(--gA,#047857)" letter-spacing=".05em">SENSORS — feedback</text>
+  <text x="700" y="47" text-anchor="middle" font-size="11.5" fill="var(--muted,#64748B)">act after · detect and self-correct</text>
+
+  <!-- row headers -->
+  <text x="24" y="140" font-size="13" font-weight="720" fill="var(--p3,#0F766E)">COMPUTATIONAL</text>
+  <text x="24" y="158" font-size="11" fill="var(--muted,#64748B)">deterministic</text>
+  <text x="24" y="172" font-size="11" fill="var(--muted,#64748B)">ms–seconds</text>
+  <text x="24" y="186" font-size="11" fill="var(--muted,#64748B)">reliable</text>
+
+  <text x="24" y="316" font-size="13" font-weight="720" fill="var(--p5,#B45309)">INFERENTIAL</text>
+  <text x="24" y="334" font-size="11" fill="var(--muted,#64748B)">probabilistic</text>
+  <text x="24" y="348" font-size="11" fill="var(--muted,#64748B)">slower</text>
+  <text x="24" y="362" font-size="11" fill="var(--muted,#64748B)">semantically rich</text>
+
+  <!-- Q1 computational guides -->
+  <rect x="160" y="60" width="340" height="180" rx="11"
+        fill="var(--p3-wash,#F0FDFA)" stroke="var(--p3,#0F766E)" stroke-width="1.6"/>
+  <text x="180" y="86" font-size="12" fill="var(--ink-soft,#334155)">language servers · CLIs · scripts</text>
+  <text x="180" y="106" font-size="12" fill="var(--ink-soft,#334155)">codemods · scaffolds · templates</text>
+  <text x="180" y="126" font-size="12" fill="var(--ink-soft,#334155)">types that make bad states</text>
+  <text x="180" y="143" font-size="12" fill="var(--ink-soft,#334155)">unrepresentable</text>
+  <rect x="180" y="170" width="150" height="46" rx="7"
+        fill="var(--paper,#FFF)" stroke="var(--p3,#0F766E)" stroke-width="1.2"/>
+  <text x="255" y="189" text-anchor="middle" font-size="11.5" font-weight="640" fill="var(--p3,#0F766E)">MCP</text>
+  <text x="255" y="207" text-anchor="middle" font-size="14" font-weight="740" font-family="ui-monospace, monospace" fill="var(--p3,#0F766E)">2.3–11.6%</text>
+
+  <!-- Q2 computational sensors — the empty cell -->
+  <rect x="530" y="60" width="340" height="180" rx="11"
+        fill="var(--gA-wash,#ECFDF5)" stroke="var(--gA,#047857)" stroke-width="2.2"/>
+  <text x="550" y="86" font-size="12" fill="var(--ink-soft,#334155)">linters · type checkers · tests</text>
+  <text x="550" y="106" font-size="12" fill="var(--ink-soft,#334155)">static analysis · fitness functions</text>
+  <text x="550" y="126" font-size="12" font-weight="640" fill="var(--gA,#047857)">highest authority · never ages</text>
+  <rect x="550" y="152" width="300" height="66" rx="7"
+        fill="var(--paper,#FFF)" stroke="var(--p1,#BE123C)" stroke-width="1.8"/>
+  <text x="700" y="173" text-anchor="middle" font-size="11.5" font-weight="640" fill="var(--p1,#BE123C)">HOOKS — sensors inside the agent loop</text>
+  <text x="700" y="198" text-anchor="middle" font-size="20" font-weight="760" font-family="ui-monospace, monospace" fill="var(--p1,#BE123C)">0.9 – 3.2%</text>
+  <text x="700" y="212" text-anchor="middle" font-size="10.5" font-style="italic" fill="var(--p1,#BE123C)">least adopted of all eight mechanisms</text>
+
+  <!-- Q3 inferential guides — the crowded cell -->
+  <rect x="160" y="256" width="340" height="180" rx="11"
+        fill="var(--p4-wash,#F5F3FF)" stroke="var(--p4,#7C3AED)" stroke-width="2.2"/>
+  <text x="180" y="282" font-size="12" fill="var(--ink-soft,#334155)">principles · rules · how-to guides</text>
+  <text x="180" y="302" font-size="12" fill="var(--ink-soft,#334155)">reference documentation</text>
+  <text x="180" y="322" font-size="12" font-weight="640" fill="var(--p4,#7C3AED)">lowest authority · ages fastest</text>
+  <rect x="180" y="348" width="300" height="66" rx="7"
+        fill="var(--paper,#FFF)" stroke="var(--p4,#7C3AED)" stroke-width="1.8"/>
+  <text x="330" y="369" text-anchor="middle" font-size="11.5" font-weight="640" fill="var(--p4,#7C3AED)">CONTEXT FILES — CLAUDE.md, AGENTS.md</text>
+  <text x="330" y="394" text-anchor="middle" font-size="20" font-weight="760" font-family="ui-monospace, monospace" fill="var(--p4,#7C3AED)">90.6%</text>
+  <text x="330" y="408" text-anchor="middle" font-size="10.5" font-style="italic" fill="var(--p4,#7C3AED)">present in 2,586 of 2,853 repositories</text>
+
+  <!-- Q4 inferential sensors -->
+  <rect x="530" y="256" width="340" height="180" rx="11"
+        fill="var(--p5-wash,#FFFBEB)" stroke="var(--p5,#B45309)" stroke-width="1.6"/>
+  <text x="550" y="282" font-size="12" fill="var(--ink-soft,#334155)">review agents · LLM-as-judge</text>
+  <text x="550" y="302" font-size="12" fill="var(--ink-soft,#334155)">semantic analysis</text>
+  <text x="550" y="322" font-size="12" fill="var(--muted,#64748B)">advisory adds review load;</text>
+  <text x="550" y="339" font-size="12" fill="var(--muted,#64748B)">only blocking removes it</text>
+  <rect x="550" y="360" width="150" height="46" rx="7"
+        fill="var(--paper,#FFF)" stroke="var(--p5,#B45309)" stroke-width="1.2"/>
+  <text x="625" y="379" text-anchor="middle" font-size="11.5" font-weight="640" fill="var(--p5,#B45309)">Subagents</text>
+  <text x="625" y="397" text-anchor="middle" font-size="14" font-weight="740" font-family="ui-monospace, monospace" fill="var(--p5,#B45309)">6.6–7.4%</text>
+
+  <!-- the ratio callout -->
+  <path d="M330 348 C 400 300, 560 268, 690 218" fill="none"
+        stroke="var(--p1,#BE123C)" stroke-width="2" stroke-dasharray="6 4" opacity=".6"/>
+  <rect x="380" y="228" width="200" height="34" rx="8"
+        fill="var(--p1,#BE123C)"/>
+  <text x="480" y="250" text-anchor="middle" font-size="14.5" font-weight="740" fill="var(--paper,#FFFFFF)">
+    roughly 29 : 1</text>
+</svg>

@@ -1,0 +1,80 @@
+<svg viewBox="0 0 940 470" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="Four nested rings of control: structure, graph, harness, context, around the model."
+     font-family="ui-sans-serif, system-ui, -apple-system, sans-serif">
+  <defs>
+    <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="var(--muted,#64748B)"/>
+    </marker>
+  </defs>
+
+  <!-- STRUCTURE -->
+  <rect x="20" y="20" width="620" height="430" rx="14"
+        fill="var(--p2-wash,#EEF2FF)" stroke="var(--p2,#4338CA)" stroke-width="2"/>
+  <text x="40" y="46" font-size="13" font-weight="720" fill="var(--p2,#4338CA)" letter-spacing=".05em">STRUCTURE</text>
+  <text x="150" y="46" font-size="12" fill="var(--muted,#64748B)">reduce what must be known · Ch 10</text>
+
+  <!-- GRAPH -->
+  <rect x="46" y="60" width="568" height="368" rx="12"
+        fill="var(--p3-wash,#F0FDFA)" stroke="var(--p3,#0F766E)" stroke-width="2"/>
+  <text x="66" y="86" font-size="13" font-weight="720" fill="var(--p3,#0F766E)" letter-spacing=".05em">GRAPH</text>
+  <text x="146" y="86" font-size="12" fill="var(--muted,#64748B)">make what remains findable · Ch 9</text>
+
+  <!-- HARNESS -->
+  <rect x="72" y="100" width="516" height="306" rx="11"
+        fill="var(--p5-wash,#FFFBEB)" stroke="var(--p5,#B45309)" stroke-width="2"/>
+  <text x="92" y="126" font-size="13" font-weight="720" fill="var(--p5,#B45309)" letter-spacing=".05em">HARNESS</text>
+  <text x="186" y="126" font-size="12" fill="var(--muted,#64748B)">steer, then check · Ch 7–8</text>
+
+  <!-- CONTEXT -->
+  <rect x="98" y="140" width="464" height="244" rx="10"
+        fill="var(--p4-wash,#F5F3FF)" stroke="var(--p4,#7C3AED)" stroke-width="2"/>
+  <text x="118" y="166" font-size="13" font-weight="720" fill="var(--p4,#7C3AED)" letter-spacing=".05em">CONTEXT</text>
+  <text x="206" y="166" font-size="12" fill="var(--muted,#64748B)">design the payload · Ch 6</text>
+
+  <!-- MODEL -->
+  <rect x="212" y="212" width="236" height="106" rx="10"
+        fill="var(--ink,#0F172A)" opacity=".92"/>
+  <text x="330" y="256" text-anchor="middle" font-size="17" font-weight="700" fill="var(--paper,#FFFFFF)" letter-spacing=".08em">MODEL</text>
+  <text x="330" y="280" text-anchor="middle" font-size="11.5" fill="var(--paper,#FFFFFF)" opacity=".78">not yours · not stable</text>
+  <text x="330" y="298" text-anchor="middle" font-size="11.5" fill="var(--paper,#FFFFFF)" opacity=".78">changes without notice</text>
+
+  <!-- ceiling annotations -->
+  <g font-size="11" fill="var(--muted,#64748B)">
+    <text x="118" y="352">✗ saturates: the whole file scored 12.7% vs 18.0% for a window</text>
+    <text x="92"  y="374">✗ bounded by Ashby — a finite regulator, unbounded generator</text>
+    <text x="66"  y="396">~ reports the structure it is given; makes a tangle navigable, not small</text>
+    <text x="40"  y="418" font-weight="640" fill="var(--p2,#4338CA)">▓ the only ring injection cannot cross</text>
+  </g>
+
+  <!-- right column: the two readings -->
+  <g>
+    <rect x="668" y="20" width="252" height="196" rx="11"
+          fill="var(--wash,#F8FAFC)" stroke="var(--line,#E2E8F0)" stroke-width="1.4"/>
+    <text x="688" y="46" font-size="11.5" font-weight="700" letter-spacing=".08em"
+          fill="var(--ink,#0F172A)" font-family="ui-monospace, monospace">READ OUTWARD</text>
+    <text x="688" y="70" font-size="12.5" fill="var(--muted,#64748B)">Each ring exists because</text>
+    <text x="688" y="88" font-size="12.5" fill="var(--muted,#64748B)">the one inside it has a</text>
+    <text x="688" y="106" font-size="12.5" fill="var(--muted,#64748B)">ceiling.</text>
+    <path d="M690 126 H900" stroke="var(--line,#E2E8F0)" stroke-width="1.2"/>
+    <text x="688" y="150" font-size="11.5" font-weight="700" letter-spacing=".08em"
+          fill="var(--ink,#0F172A)" font-family="ui-monospace, monospace">READ INWARD</text>
+    <text x="688" y="174" font-size="12.5" fill="var(--muted,#64748B)">Each outer ring makes the</text>
+    <text x="688" y="192" font-size="12.5" fill="var(--muted,#64748B)">inner ones cheaper.</text>
+  </g>
+
+  <g>
+    <rect x="668" y="232" width="252" height="218" rx="11"
+          fill="var(--gA-wash,#ECFDF5)" stroke="var(--gA,#047857)" stroke-width="1.6"/>
+    <text x="688" y="258" font-size="11.5" font-weight="700" letter-spacing=".08em"
+          fill="var(--gA,#047857)" font-family="ui-monospace, monospace">CROSSING ALL FOUR</text>
+    <text x="688" y="282" font-size="13.5" font-weight="660" fill="var(--gA,#047857)">Verification &amp; security</text>
+    <text x="688" y="306" font-size="12" fill="var(--muted,#64748B)">Injection defeats every</text>
+    <text x="688" y="323" font-size="12" fill="var(--muted,#64748B)">control that acts on what</text>
+    <text x="688" y="340" font-size="12" fill="var(--muted,#64748B)">an agent <tspan font-style="italic">believes</tspan>, and</text>
+    <text x="688" y="357" font-size="12" fill="var(--muted,#64748B)">cannot defeat one that</text>
+    <text x="688" y="374" font-size="12" fill="var(--muted,#64748B)">bounds what it <tspan font-style="italic">can do</tspan>.</text>
+    <path d="M690 392 H900" stroke="var(--gA,#047857)" stroke-width="1" opacity=".35"/>
+    <text x="688" y="414" font-size="11.5" fill="var(--muted,#64748B)">A poisoned context cannot</text>
+    <text x="688" y="431" font-size="11.5" fill="var(--muted,#64748B)">grant credentials it lacks.</text>
+  </g>
+</svg>

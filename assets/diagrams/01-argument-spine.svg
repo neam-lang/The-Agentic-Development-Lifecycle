@@ -1,0 +1,140 @@
+<svg viewBox="0 0 940 452" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="One price fell and six goods resting on it fell together; each must now be bought explicitly."
+     font-family="ui-sans-serif, system-ui, -apple-system, sans-serif">
+  <defs>
+    <marker id="ar1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="var(--muted,#64748B)"/>
+    </marker>
+    <linearGradient id="pillarG" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0"   stop-color="var(--p2,#4338CA)" stop-opacity=".92"/>
+      <stop offset="0.5" stop-color="var(--p1,#BE123C)" stop-opacity=".92"/>
+      <stop offset="1"   stop-color="var(--p5,#B45309)" stop-opacity=".92"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ── the six goods ─────────────────────────────────────────── -->
+  <text x="20" y="22" font-size="11" letter-spacing="1.6"
+        fill="var(--faint,#94A3B8)" font-family="ui-monospace, monospace">
+    SIX GOODS THAT ARRIVED FREE — NONE OF THEM DESIGNED, NONE OF THEM AUDITED
+  </text>
+
+  <g>
+    <!-- 1 scrutiny -->
+    <rect x="20" y="36" width="140" height="62" rx="9"
+          fill="var(--p1-wash,#FFF1F2)" stroke="var(--p1,#BE123C)" stroke-width="1.4"/>
+    <text x="90" y="60" text-anchor="middle" font-size="13.5" font-weight="640" fill="var(--p1,#BE123C)">Scrutiny</text>
+    <text x="90" y="79" text-anchor="middle" font-size="11" fill="var(--muted,#64748B)">effort evidenced</text>
+    <text x="90" y="91" text-anchor="middle" font-size="11" fill="var(--muted,#64748B)">care</text>
+
+    <!-- 2 intent -->
+    <rect x="172" y="36" width="140" height="62" rx="9"
+          fill="var(--p1-wash,#FFF1F2)" stroke="var(--p1,#BE123C)" stroke-width="1.4"/>
+    <text x="242" y="60" text-anchor="middle" font-size="13.5" font-weight="640" fill="var(--p1,#BE123C)">Intent</text>
+    <text x="242" y="79" text-anchor="middle" font-size="11" fill="var(--muted,#64748B)">an author you</text>
+    <text x="242" y="91" text-anchor="middle" font-size="11" fill="var(--muted,#64748B)">could ask</text>
+
+    <!-- 3 pacing -->
+    <rect x="324" y="36" width="140" height="62" rx="9"
+          fill="var(--p1-wash,#FFF1F2)" stroke="var(--p1,#BE123C)" stroke-width="1.4"/>
+    <text x="394" y="60" text-anchor="middle" font-size="13.5" font-weight="640" fill="var(--p1,#BE123C)">Pacing</text>
+    <text x="394" y="79" text-anchor="middle" font-size="11" fill="var(--muted,#64748B)">feedback outran</text>
+    <text x="394" y="91" text-anchor="middle" font-size="11" fill="var(--muted,#64748B)">change</text>
+
+    <!-- 4 trust boundary -->
+    <rect x="476" y="36" width="140" height="62" rx="9"
+          fill="var(--p1-wash,#FFF1F2)" stroke="var(--p1,#BE123C)" stroke-width="1.4"/>
+    <text x="546" y="60" text-anchor="middle" font-size="13.5" font-weight="640" fill="var(--p1,#BE123C)">Trust boundary</text>
+    <text x="546" y="79" text-anchor="middle" font-size="11" fill="var(--muted,#64748B)">reading was never</text>
+    <text x="546" y="91" text-anchor="middle" font-size="11" fill="var(--muted,#64748B)">dangerous</text>
+
+    <!-- 5 homeostasis -->
+    <rect x="628" y="36" width="140" height="62" rx="9"
+          fill="var(--p1-wash,#FFF1F2)" stroke="var(--p1,#BE123C)" stroke-width="1.4"/>
+    <text x="698" y="60" text-anchor="middle" font-size="13.5" font-weight="640" fill="var(--p1,#BE123C)">Homeostasis</text>
+    <text x="698" y="79" text-anchor="middle" font-size="11" fill="var(--muted,#64748B)">someone cleaned</text>
+    <text x="698" y="91" text-anchor="middle" font-size="11" fill="var(--muted,#64748B)">up eventually</text>
+
+    <!-- 6 apprenticeship -->
+    <rect x="780" y="36" width="140" height="62" rx="9"
+          fill="var(--p1-wash,#FFF1F2)" stroke="var(--p1,#BE123C)" stroke-width="1.4"/>
+    <text x="850" y="60" text-anchor="middle" font-size="13.5" font-weight="640" fill="var(--p1,#BE123C)">Apprenticeship</text>
+    <text x="850" y="79" text-anchor="middle" font-size="11" fill="var(--muted,#64748B)">juniors learned by</text>
+    <text x="850" y="91" text-anchor="middle" font-size="11" fill="var(--muted,#64748B)">doing cheap work</text>
+  </g>
+
+  <!-- legs down to the pillar -->
+  <g stroke="var(--line,#E2E8F0)" stroke-width="1.6">
+    <path d="M90 98 V128"/><path d="M242 98 V128"/><path d="M394 98 V128"/>
+    <path d="M546 98 V128"/><path d="M698 98 V128"/><path d="M850 98 V128"/>
+  </g>
+
+  <!-- ── the pillar ─────────────────────────────────────────────── -->
+  <rect x="20" y="128" width="900" height="46" rx="8" fill="url(#pillarG)"/>
+  <text x="470" y="157" text-anchor="middle" font-size="15" font-weight="700"
+        fill="var(--paper,#FFFFFF)" letter-spacing=".04em">THE COST OF PRODUCING CODE</text>
+
+  <!-- the fracture -->
+  <path d="M20 178 L120 190 L200 176 L300 194 L400 178 L500 196 L600 178 L700 192 L800 176 L920 190"
+        fill="none" stroke="var(--p1,#BE123C)" stroke-width="2.4" stroke-dasharray="7 5" opacity=".85"/>
+  <text x="470" y="214" text-anchor="middle" font-size="13.5" font-style="italic"
+        fill="var(--p1,#BE123C)" font-weight="600">the price fell — and nobody was billed for what it had been buying</text>
+
+  <!-- ── the replacements ───────────────────────────────────────── -->
+  <text x="20" y="252" font-size="11" letter-spacing="1.6"
+        fill="var(--faint,#94A3B8)" font-family="ui-monospace, monospace">
+    EACH MUST NOW BE BOUGHT DELIBERATELY — WHICH IS WHAT A LIFECYCLE IS FOR
+  </text>
+
+  <g stroke="var(--muted,#64748B)" stroke-width="1.3" marker-end="url(#ar1)" opacity=".55">
+    <path d="M90 224 V264"/><path d="M242 224 V264"/><path d="M394 224 V264"/>
+    <path d="M546 224 V264"/><path d="M698 224 V264"/><path d="M850 224 V264"/>
+  </g>
+
+  <g>
+    <rect x="20" y="268" width="140" height="66" rx="9"
+          fill="var(--p2-wash,#EEF2FF)" stroke="var(--p2,#4338CA)" stroke-width="1.4"/>
+    <text x="90" y="292" text-anchor="middle" font-size="13" font-weight="640" fill="var(--p2,#4338CA)">Sensors</text>
+    <text x="90" y="310" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">blocking, drilled</text>
+    <text x="90" y="325" text-anchor="middle" font-size="10" font-family="ui-monospace, monospace" fill="var(--faint,#94A3B8)">Ch 7 · 8</text>
+
+    <rect x="172" y="268" width="140" height="66" rx="9"
+          fill="var(--p2-wash,#EEF2FF)" stroke="var(--p2,#4338CA)" stroke-width="1.4"/>
+    <text x="242" y="292" text-anchor="middle" font-size="13" font-weight="640" fill="var(--p2,#4338CA)">Specifications</text>
+    <text x="242" y="310" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">held-out, before</text>
+    <text x="242" y="325" text-anchor="middle" font-size="10" font-family="ui-monospace, monospace" fill="var(--faint,#94A3B8)">Ch 8 · 12</text>
+
+    <rect x="324" y="268" width="140" height="66" rx="9"
+          fill="var(--p3-wash,#F0FDFA)" stroke="var(--p3,#0F766E)" stroke-width="1.4"/>
+    <text x="394" y="292" text-anchor="middle" font-size="13" font-weight="640" fill="var(--p3,#0F766E)">Ordered controls</text>
+    <text x="394" y="310" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">by cost and speed</text>
+    <text x="394" y="325" text-anchor="middle" font-size="10" font-family="ui-monospace, monospace" fill="var(--faint,#94A3B8)">Ch 8 · 12</text>
+
+    <rect x="476" y="268" width="140" height="66" rx="9"
+          fill="var(--p3-wash,#F0FDFA)" stroke="var(--p3,#0F766E)" stroke-width="1.4"/>
+    <text x="546" y="292" text-anchor="middle" font-size="13" font-weight="640" fill="var(--p3,#0F766E)">Capability scoping</text>
+    <text x="546" y="310" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">by effect, not name</text>
+    <text x="546" y="325" text-anchor="middle" font-size="10" font-family="ui-monospace, monospace" fill="var(--faint,#94A3B8)">Ch 11 · 13</text>
+
+    <rect x="628" y="268" width="140" height="66" rx="9"
+          fill="var(--p5-wash,#FFFBEB)" stroke="var(--p5,#B45309)" stroke-width="1.4"/>
+    <text x="698" y="292" text-anchor="middle" font-size="13" font-weight="640" fill="var(--p5,#B45309)">Drift detection</text>
+    <text x="698" y="310" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">standing mandate</text>
+    <text x="698" y="325" text-anchor="middle" font-size="10" font-family="ui-monospace, monospace" fill="var(--faint,#94A3B8)">Ch 4 · 12</text>
+
+    <rect x="780" y="268" width="140" height="66" rx="9"
+          fill="var(--p4-wash,#F5F3FF)" stroke="var(--p4,#7C3AED)" stroke-width="1.4"/>
+    <text x="850" y="292" text-anchor="middle" font-size="13" font-weight="640" fill="var(--p4,#7C3AED)">Deliberate practice</text>
+    <text x="850" y="310" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">attempt first</text>
+    <text x="850" y="325" text-anchor="middle" font-size="10" font-family="ui-monospace, monospace" fill="var(--faint,#94A3B8)">Ch 19 · 20</text>
+  </g>
+
+  <!-- ── the definition ─────────────────────────────────────────── -->
+  <rect x="20" y="358" width="900" height="72" rx="10"
+        fill="var(--wash,#F8FAFC)" stroke="var(--p2,#4338CA)" stroke-width="1.6"/>
+  <text x="470" y="386" text-anchor="middle" font-size="14.5" font-weight="700" fill="var(--p2,#4338CA)">
+    ADLC is the discipline of explicitly buying what the cost of writing code used to provide for free.
+  </text>
+  <text x="470" y="410" text-anchor="middle" font-size="12.5" fill="var(--muted,#64748B)">
+    Nobody removed six controls. One thing was withdrawn, and six goods were resting on it.
+  </text>
+</svg>

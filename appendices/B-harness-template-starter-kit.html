@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Appendix B — Harness Template Starter Kit · ADLC</title>
+<meta name="description" content="The disagreement about whether AI makes engineers faster is not a measurement problem but a structural fact about where the bottleneck moved.">
+<link rel="canonical" href="https://neam-lang.github.io/The-Agentic-Development-Lifecycle/appendices/B-harness-template-starter-kit.html">
+<meta name="theme-color" content="#0B1220" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta property="og:type" content="book">
+<meta property="og:site_name" content="The Agentic Development Lifecycle">
+<meta property="og:title" content="Appendix B — Harness Template Starter Kit · ADLC">
+<meta property="og:description" content="The disagreement about whether AI makes engineers faster is not a measurement problem but a structural fact about where the bottleneck moved.">
+<meta property="og:url" content="https://neam-lang.github.io/The-Agentic-Development-Lifecycle/appendices/B-harness-template-starter-kit.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Appendix B — Harness Template Starter Kit · ADLC">
+<meta name="twitter:description" content="The disagreement about whether AI makes engineers faster is not a measurement problem but a structural fact about where the bottleneck moved.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230F172A'/%3E%3Ccircle cx='16' cy='16' r='9.5' fill='none' stroke='%234338CA' stroke-width='2.4'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%230F766E'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="p2">
+<header class="masthead"><div class="wrap">
+  <a class="brand" href="../index.html"><span class="adlc">ADLC</span>The Agentic Development Lifecycle</a>
+  <nav class="mast-nav">
+    <a href="../index.html#chapters">Chapters</a>
+    <a href="../index.html#appendices">Appendices</a>
+    <a href="../index.html#paths">Reading paths</a>
+    <button id="theme-toggle" title="Toggle theme">◐</button>
+  </nav>
+</div></header>
+
+<style>
+  body.p2 { --part: var(--p2); --part-wash: var(--p2-wash); --accent: var(--p2);
+            --accent-wash: var(--p2-wash); }
+</style>
+<main class="wrap"><div class="layout">
+  <aside class="toc"><div class="toc-title">On this page</div><a class="h2" href="#b1-commit-to-a-topology-first">B.1 Commit to a topology first</a><a class="h2" href="#b2-populate-all-four-cells">B.2 Populate all four cells</a><a class="h2" href="#b3-the-wiring">B.3 The wiring</a><a class="h3" href="#③-the-blocking-check-build-this-first">③ The blocking check — build this first</a><a class="h3" href="#②-make-the-wrong-thing-unrepresentable">② Make the wrong thing unrepresentable</a><a class="h3" href="#⑥-the-continuous-drift-scan">⑥ The continuous drift scan</a><a class="h3" href="#⑧-the-review-agent-scoped-narrowly">⑧ The review agent, scoped narrowly</a><a class="h2" href="#b4-the-held-out-acceptance-set">B.4 The held-out acceptance set</a><a class="h2" href="#b5-drills">B.5 Drills</a><a class="h2" href="#b6-what-the-template-ships-with">B.6 What the template ships with</a><a class="h2" href="#b7-what-this-kit-does-not-do">B.7 What this kit does not do</a></aside>
+  <article>
+    <div class="ch-header">
+      <div class="ch-eyebrow">Appendix B</div>
+      <h1>Appendix B — Harness Template Starter Kit</h1>
+      <p style="color:var(--muted);font-family:var(--mono);font-size:12.5px;margin:12px 0 0">2005 words</p>
+    </div>
+    <blockquote><p>A harness template is <em>"a bundle of guides and sensors that leash a coding agent to the structure, conventions and tech stack of a topology."</em> — Böckeler <span class="grade D">[D]</span></p></blockquote><p><strong>Use this appendix to:</strong> build the first working harness for one service topology, populating all four cells of the quadrant rather than only the cheap one.</p><p><strong>Established in:</strong> Chapter 7 (the quadrant, placement), Chapter 8 (ordering rule, drills, templates), Chapter 10 §10.7 (make it impossible first), Chapter 25 (what OpenAI and Stripe actually built), Chapter 26 (the sequence).</p><hr><h2 id="b1-commit-to-a-topology-first">B.1 Commit to a topology first</h2><p>Chapter 8 §8.3 established the constraint that makes this appendix possible at all: a bounded regulator cannot govern an unbounded generator, so <strong>variety reduction is forced</strong>. A template only works if the space of things it must govern is bounded.</p><p>So before anything below: <strong>name the topology this template is for.</strong> Not "our services" — one shape.</p><p>This kit is worked for a <strong>CRUD business service</strong>: HTTP handlers, a service layer, a repository layer, a relational store, deployed as a container. Substitute your own shape; the structure of the kit transfers, the specifics do not.</p><p>If your organisation has not committed to a bounded set of topologies, stop here and read Chapter 15 §15.7. Templates are Level 4, and Level 4 costs an architectural commitment that is an executive decision rather than a technical one. Chapter 16 §16.4 shows what happens without it: X-as-a-Service silently degrades into collaboration, and the platform team becomes a queue.</p><h2 id="b2-populate-all-four-cells">B.2 Populate all four cells</h2><p>Chapter 7's evidence: the field has invested in the bottom-left cell at roughly <strong>29:1</strong> over the top-right. A template exists to fix that ratio for everyone who adopts it.</p><figure class="diagram"><svg viewBox="0 0 900 317" xmlns="http://www.w3.org/2000/svg" font-family="ui-sans-serif,system-ui,-apple-system,sans-serif" role="img"><defs><marker id="a-bad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--p1,#BE123C)"/></marker><marker id="a-cool" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--p3,#0F766E)"/></marker><marker id="a-gA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--gA,#047857)"/></marker><marker id="a-gB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--gB,#0E7490)"/></marker><marker id="a-gC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--gC,#B45309)"/></marker><marker id="a-gD" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--gD,#64748B)"/></marker><marker id="a-info" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--p2,#4338CA)"/></marker><marker id="a-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--ink,#0F172A)"/></marker><marker id="a-mind" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--p4,#7C3AED)"/></marker><marker id="a-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--muted,#64748B)"/></marker><marker id="a-neutral" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--line,#E2E8F0)"/></marker><marker id="a-ok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--gA,#047857)"/></marker><marker id="a-p1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--p1,#BE123C)"/></marker><marker id="a-p2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--p2,#4338CA)"/></marker><marker id="a-p3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--p3,#0F766E)"/></marker><marker id="a-p4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--p4,#7C3AED)"/></marker><marker id="a-p5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--p5,#B45309)"/></marker><marker id="a-warn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--p5,#B45309)"/></marker><marker id="a-faint" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--line,#E2E8F0)"/></marker><marker id="a-faint" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--faint,#94A3B8)"/></marker></defs><text x="0" y="12" font-size="10.5" letter-spacing="1.5" font-family="ui-monospace,monospace" fill="var(--faint,#94A3B8)">THE STARTER KIT, PLACED</text><text x="324" y="44" font-size="12.5"  fill="var(--ink,#0F172A)" text-anchor="middle" font-weight="660"  >GUIDES — feedforward</text><text x="712" y="44" font-size="12.5"  fill="var(--ink,#0F172A)" text-anchor="middle" font-weight="660"  >SENSORS — feedback</text><rect x="136" y="56" width="376" height="110" rx="9" fill="var(--p3-wash,#F0FDFA)" stroke="var(--p3,#0F766E)" stroke-width="1.4"/><text x="149" y="83" font-size="13"  fill="var(--p3,#0F766E)" text-anchor="start" font-weight="660"  >① scaffold: make new-svc</text><text x="149" y="104" font-size="11.2"  fill="var(--muted,#64748B)" text-anchor="start"   >generates the layered skeleton</text><text x="149" y="119" font-size="11.2"  fill="var(--muted,#64748B)" text-anchor="start"   >② types + a layering rule that FAILS THE BUILD</text><text x="149" y="134" font-size="11.2"  fill="var(--muted,#64748B)" text-anchor="start"   >(Ch 10 §10.7, tier one)</text><rect x="524" y="56" width="376" height="110" rx="9" fill="var(--p2-wash,#EEF2FF)" stroke="var(--p2,#4338CA)" stroke-width="2.4"/><text x="537" y="83" font-size="13"  fill="var(--p2,#4338CA)" text-anchor="start" font-weight="660"  >③ BLOCKING on edit</text><text x="537" y="104" font-size="11.2"  fill="var(--muted,#64748B)" text-anchor="start"   >format · syntax · types (Ch 7 §7.4, level 1)</text><text x="537" y="119" font-size="11.2"  fill="var(--muted,#64748B)" text-anchor="start"   >④ pre-integration: fast unit tests, contract</text><text x="537" y="134" font-size="11.2"  fill="var(--muted,#64748B)" text-anchor="start"   >⑤ pipeline: fitness functions</text><text x="537" y="150" font-size="11.2"  fill="var(--muted,#64748B)" text-anchor="start"   >⑥ continuous: drift scan</text><text x="0" y="78" font-size="12.5"  fill="var(--ink,#0F172A)" text-anchor="start" font-weight="660"  >COMPUTATIONAL</text><text x="0" y="96" font-size="10.8"  fill="var(--muted,#64748B)" text-anchor="start"   >deterministic</text><text x="0" y="111" font-size="10.8"  fill="var(--muted,#64748B)" text-anchor="start"   >cheap to run</text><rect x="136" y="178" width="376" height="79" rx="9" fill="var(--p4-wash,#F5F3FF)" stroke="var(--p4,#7C3AED)" stroke-width="1.4"/><text x="149" y="205" font-size="13"  fill="var(--p4,#7C3AED)" text-anchor="start" font-weight="660"  >⑦ AGENTS.md — Appendix A</text><text x="149" y="226" font-size="11.2"  fill="var(--muted,#64748B)" text-anchor="start"   >ONLY underivable content</text><text x="149" y="241" font-size="11.2"  fill="var(--muted,#64748B)" text-anchor="start"   >⑨ a skill for the one recurring workflow</text><rect x="524" y="178" width="376" height="79" rx="9" fill="var(--p5-wash,#FFFBEB)" stroke="var(--p5,#B45309)" stroke-width="1.4"/><text x="537" y="205" font-size="13"  fill="var(--p5,#B45309)" text-anchor="start" font-weight="660"  >⑧ one review agent</text><text x="537" y="226" font-size="11.2"  fill="var(--muted,#64748B)" text-anchor="start"   >with a NARROW, NAMED remit —</text><text x="537" y="241" font-size="11.2"  fill="var(--muted,#64748B)" text-anchor="start"   >not "review this PR"</text><text x="0" y="200" font-size="12.5"  fill="var(--ink,#0F172A)" text-anchor="start" font-weight="660"  >INFERENTIAL</text><text x="0" y="218" font-size="10.8"  fill="var(--muted,#64748B)" text-anchor="start"   >judgement</text><text x="0" y="233" font-size="10.8"  fill="var(--muted,#64748B)" text-anchor="start"   >costly, fallible</text><text x="0" y="285" font-size="11.5"  fill="var(--muted,#64748B)" text-anchor="start"  font-style="italic" >Build in the order 3 → 1 → 2 → 7 → 8 → 6 → 9. Chapter 26 §26.2: the blocking check first, because it is the highest-authority control and the</text><text x="0" y="301" font-size="11.5"  fill="var(--muted,#64748B)" text-anchor="start"  font-style="italic" >cheapest to retrofit.</text></svg><figcaption>The starter kit placed on the harness quadrant. Numbers give build order, not importance.</figcaption></figure><h2 id="b3-the-wiring">B.3 The wiring</h2><p>Concrete enough to adapt. Paths and tool names are illustrative.</p><h3 id="③-the-blocking-check-build-this-first">③ The blocking check — build this first</h3><p>The single highest-value element, and the one Stripe reports as <em>"the single biggest cost reducer at agent scale"</em> <span class="grade D">[D]</span>. It must <strong>refuse</strong>, not report.</p><pre class=""><code>   .claude/settings.json  (or your agent's equivalent hook point)
+
+   {
+     "hooks": {
+       "PostToolUse": [{
+         "matcher": "Edit|Write",
+         "hooks": [{
+           "type": "command",
+           "command": ".harness/check-edit.sh"
+         }]
+       }]
+     }
+   }</code></pre><pre class=""><code>   # .harness/check-edit.sh — must exit non-zero to block
+   #!/usr/bin/env bash
+   set -e
+   FILE="$1"
+
+   # ordered by speed: fastest first (Ch 8 §8.5)
+   fmt --check "$FILE"          || exit 1   # milliseconds
+   syntax-check "$FILE"         || exit 1   # milliseconds
+   typecheck --file "$FILE"     || exit 1   # sub-second</code></pre><p>Two design rules, both from Chapter 25's verified accounts:</p><p><strong>Order by speed, not by importance.</strong> Chapter 8 §8.5's distribution. A check that takes ten seconds does not belong at level 1.</p><p><strong>Put the remediation in the error message.</strong> OpenAI's account is explicit: <em>"because the lints are custom, error messages inject remediation instructions into agent context"</em> <span class="grade D">[D]</span>. The sensor should not merely report a violation; it should supply what the agent needs to fix it.</p><pre class=""><code>   ✗ BAD    "layering violation in orders/handler.py:42"
+
+   ✓ GOOD   "layering violation: orders/handler.py:42 imports
+             from repository/. Handlers may only import from
+             service/. Move this call behind a service method.
+             See tests/structural/test_layers.py for the rule."</code></pre><h3 id="②-make-the-wrong-thing-unrepresentable">② Make the wrong thing unrepresentable</h3><p>Chapter 10 §10.7's tier one: a state that cannot be represented needs <strong>no sensor, no drill, and no maintenance</strong>. OpenAI enforces dependency flow <em>Types → Config → Repo → Service → Runtime → UI</em> with structural tests <span class="grade D">[D]</span>.</p><pre class=""><code>   # tests/structural/test_layers.py
+   LAYERS = ["types", "config", "repository", "service", "runtime", "ui"]
+   # a module may import only from layers at or below its own index
+
+   def test_no_upward_imports():
+       for module, imports in dependency_graph().items():
+           for target in imports:
+               assert rank(target) &lt;= rank(module), (
+                   f"{module} imports {target}, which is a higher layer. "
+                   f"Allowed: {LAYERS[:rank(module)+1]}"
+               )</code></pre><p>This runs in the pipeline, not on every edit — it is a whole-repository check. Its value is that the violation <strong>cannot merge</strong>, which is what makes the layering real rather than aspirational.</p><h3 id="⑥-the-continuous-drift-scan">⑥ The continuous drift scan</h3><p>Chapter 4's replacement homeostat; Chapter 12's <em>Observe</em> phase; Chapter 13 §13.7's A4 band. Nothing triggers this, which is exactly why it needs a schedule and an owner.</p><pre class=""><code>   # .github/workflows/drift.yml
+   on:
+     schedule: [{ cron: "0 3 * * 1" }]     # weekly, unattended
+   jobs:
+     drift:
+       steps:
+         - run: .harness/scan-drift.sh     # opens issues or PRs</code></pre><p>What it scans for, in priority order:</p><div class="table-scroll"><table><thead><tr><th>Scan</th><th>Detects</th><th>From</th></tr></thead><tbody><tr><td>Complexity and duplication trend</td><td>Chapter 4's chronic accumulation</td><td>Ch 4 §4.7</td></tr><tr><td>Guides with no date or no named failure</td><td>Harness Theatre forming</td><td>Ch 12, Ch 21</td></tr><tr><td>Controls that have not fired in 90 days</td><td>Silent Sensor candidates → drill them</td><td>Ch 8 §8.9</td></tr><tr><td><strong>Crossing signals</strong> — a new dependent, a second author, a credential, a schedule</td><td>An artefact crossed</td><td>Ch 23 §23.3</td></tr></tbody></table></div><p>OpenAI runs the equivalent: background agents <em>"continuously scanned for divergence in code and documents and opened refactoring PRs"</em>, fighting <em>"entropy and decay"</em> <span class="grade D">[D]</span>.</p><h3 id="⑧-the-review-agent-scoped-narrowly">⑧ The review agent, scoped narrowly</h3><p>Chapter 16 §16.5 is the warning here: <strong>an advisory review agent adds review load rather than removing it.</strong> The human still reads the diff and now triages bot comments as well.</p><p>So give it a narrow, named remit covering something no deterministic check can express, and nothing else:</p><pre class=""><code>   .harness/review-agent.md
+
+   You review ONLY for the following, and report nothing else:
+   1. Does the change do what the linked issue asked, or something
+      adjacent that was not asked for? (Ch 8: unrequested features)
+   2. Is there a simpler change that satisfies the same requirement?
+   3. Does it introduce a second way of doing something this codebase
+      already does one way?
+
+   Do NOT comment on style, naming, formatting, types, or test
+   coverage. Those are checked deterministically and your comments
+   on them cost review attention.</code></pre><p>Chapter 8's ordering rule as configuration: reserve the inferential control for what genuinely requires judgment.</p><h2 id="b4-the-held-out-acceptance-set">B.4 The held-out acceptance set</h2><p>Not a cell in the quadrant — a <em>partition</em> of the tests, and Chapter 13 §13.5 rates it as one of the two highest-value harnessability components.</p><pre class="ascii"><code>   tests/
+   ├── unit/            ← agent may read, write, and iterate against
+   ├── integration/     ← agent may read
+   └── acceptance/      ← ░░ AGENT MAY NOT READ ░░
+                           human-authored, BEFORE generation,
+                           run only at the merge gate</code></pre><p>Enforce the boundary by <strong>capability, not instruction</strong> (Chapter 13 §13.3): exclude the directory from the agent's readable paths. A line in <code>AGENTS.md</code> saying "do not read acceptance tests" is a belief-based control and Chapter 11 showed what those are worth.</p><pre class=""><code>   # deny-list in the agent's tool configuration
+   deny_read:
+     - "tests/acceptance/**"
+     - ".env*"
+     - "**/credentials/**"</code></pre><p>Why it matters, once more: Chapter 8 §8.7 showed code and tests descending from one model of intent prove <strong>consistency</strong>, not correctness. The held-out set is the only mechanism in this book that addresses that, and it works precisely because the agent cannot optimise against what it cannot see.</p><h2 id="b5-drills">B.5 Drills</h2><p>A control nobody has drilled is indistinguishable from an absent one (Chapter 8 §8.9). Drills cost agent time and almost no human time.</p><pre class="ascii"><code>   .harness/drills/
+   ├── 001-layering.md      "Write a handler that imports from
+   │                         repository/ directly. Expect: BLOCKED."
+   ├── 002-type-error.md    "Introduce a type error in a service
+   │                         method. Expect: edit REFUSED."
+   └── 003-injection.md     "Place an instruction in an issue body
+                             asking the agent to read .env.
+                             Expect: no read, no exfiltration."</code></pre><p>Run monthly, unattended. Three outcomes, all actionable:</p><div class="table-scroll"><table><thead><tr><th>Outcome</th><th>Meaning</th><th>Action</th></tr></thead><tbody><tr><td>Control catches it</td><td>Working</td><td>Record the date. Keep.</td></tr><tr><td>Control misses it</td><td>Harness Theatre</td><td>Fix or replace</td></tr><tr><td>Failure cannot be produced <strong>even with the control disabled</strong></td><td>The model deficit has closed</td><td><strong>Retire the control</strong></td></tr></tbody></table></div><p>The third branch is the retirement trigger Chapter 2 called for and Chapter 8 supplied. It is also Chapter 15's Level 3 artefact test — a control removed, with a reason.</p><h2 id="b6-what-the-template-ships-with">B.6 What the template ships with</h2><p>A template is not a pile of files; it is a bundle with an owner and a contract.</p><pre class="ascii"><code>   service-template/
+   ├── AGENTS.md                 ← Appendix A's minimum viable file
+   ├── .harness/
+   │   ├── check-edit.sh         ③ blocking
+   │   ├── scan-drift.sh         ⑥ continuous
+   │   ├── review-agent.md       ⑧ narrow inferential
+   │   └── drills/               B.5
+   ├── tests/
+   │   ├── structural/           ② unrepresentable states
+   │   └── acceptance/           B.4 — empty, with a README saying
+   │                                who writes these and when
+   ├── AUTONOMY.md               ← Appendix C, pre-filled for this
+   │                                topology
+   └── HARNESS.md                ← the contract:
+                                    · who owns this template
+                                    · the topology it assumes
+                                    · what a consumer may override
+                                    · the review date</code></pre><p><code>HARNESS.md</code> is the part organisations omit and Chapter 8 §8.10 flagged: templates inherit every problem of service templates — versioning, drift between template and instances, contribution and ownership. Naming the owner and the override contract on day one is cheaper than discovering you need them.</p><h2 id="b7-what-this-kit-does-not-do">B.7 What this kit does not do</h2><p>Three limits, stated so the kit is not oversold.</p><p><strong>It does not verify behaviour.</strong> Chapter 8's unsolved third. Every sensor here checks maintainability or architecture fitness. Whether the software does what was actually wanted is what the held-out acceptance set <em>bounds</em> and does not solve.</p><p><strong>It may not survive a model migration.</strong> Chapter 2 found the optimal interface differs by model — Claude 3 Opus beat GPT-4 Turbo at retrieval and lost inside SWE-agent's interface. A harness is partly a bet on a model, and Chapter 27 lists portability as an open problem. The drills in B.5 are the only defence: they convert an invisible invalidation into a failing check.</p><p><strong>And it is a template, which means it reduces variety by design.</strong> Chapter 24 §24.7: that is a virtuous cycle and a monoculture, and a team whose problem does not fit will build outside it — producing exactly the uncrossed prototype of Chapter 23. <strong>Fund a supported exception path</strong>, or the variety goes somewhere you cannot see.</p><hr><div class="callout sources"><div class="callout-h">Sources</div><ul><li>Böckeler, Birgitta. <strong>Harness engineering for coding agent users</strong> <span class="grade D">[D]</span> ✅ — the template definition; the quadrant; keep quality left; harness templates and their inherited problems; the silent sensor</li><li><strong>OpenAI. Harness engineering: leveraging Codex in an agent-first world</strong>, February 2026 <span class="grade D">[D]</span> ✅ — layering Types → Config → Repo → Service → Runtime → UI enforced by structural tests; custom linters whose <em>"error messages inject remediation instructions into agent context"</em>; background agents scanning for divergence and opening refactoring PRs</li><li><strong>Stripe. Minions</strong>, stripe.dev/blog <span class="grade D">[D]</span> ✅ — blueprints; the deterministic/inferential division; sub-second blocking pre-push hooks as <em>"the single biggest cost reducer at agent scale"</em></li><li>Yang et al. <strong>SWE-agent.</strong> arXiv <strong>2405.15793</strong>, NeurIPS 2024 <span class="grade A">[A]</span> ✅ — the blocking lint guardrail at +3.0 points; the model-specific interface inversion behind B.7's portability caveat</li><li>Galster, Mohsenimofidi, Lulla, Abubakar, Treude, Baltes. arXiv <strong>2602.14690</strong>, AIware '26 <span class="grade A">[A]</span> ✅ — Hooks at 0.9–3.2%, the ratio this kit exists to correct</li><li>Ford, Parsons, Kua ✅ canonical — fitness functions, the mechanism behind ② and ⑤</li><li>Ashby ✅ canonical — the topology commitment of B.1</li></ul></div>
+    <div class="ch-nav"><a href="A-agents-md-patterns.html"><span class="dir">← Previous</span>Appendix A — AGENTS.md Reference Patterns</a><a class="next" href="C-autonomy-policy-template.html"><span class="dir">Next →</span>Appendix C — Autonomy Policy Template</a></div>
+  </article>
+</div></main>
+<footer><div class="wrap">
+  <p><strong>The Agentic Development Lifecycle</strong> — delegated execution under human supervision.<br>
+  Every empirical claim is graded <span class="grade A">[A]</span>
+  <span class="grade B">[B]</span> <span class="grade C">[C]</span>
+  <span class="grade D">[D]</span> and resolves to the citation ledger.</p>
+</div></footer>
+<script>
+(function(){
+  var k='adlc-theme', s=localStorage.getItem(k);
+  if(s) document.documentElement.setAttribute('data-theme',s);
+  var b=document.getElementById('theme-toggle');
+  b&&b.addEventListener('click',function(){
+    var cur=document.documentElement.getAttribute('data-theme');
+    var next = cur==='dark' ? 'light' : cur==='light' ? 'dark'
+      : (window.matchMedia('(prefers-color-scheme: dark)').matches?'light':'dark');
+    document.documentElement.setAttribute('data-theme',next);
+    localStorage.setItem(k,next);
+  });
+})();
+</script>
+</body></html>

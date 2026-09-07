@@ -1,0 +1,96 @@
+<svg viewBox="0 0 940 440" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="The inner delegation cycle inside the outer steering cycle, connected only by artefacts."
+     font-family="ui-sans-serif, system-ui, -apple-system, sans-serif">
+  <defs>
+    <marker id="ar5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="var(--p3,#0F766E)"/>
+    </marker>
+    <marker id="ar5b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="var(--p2,#4338CA)"/>
+    </marker>
+  </defs>
+
+  <!-- OUTER -->
+  <rect x="18" y="18" width="904" height="404" rx="14"
+        fill="var(--p3-wash,#F0FDFA)" stroke="var(--p3,#0F766E)" stroke-width="2"/>
+  <text x="40" y="44" font-size="13" font-weight="720" fill="var(--p3,#0F766E)" letter-spacing=".05em">
+    OUTER LOOP — THE STEERING CYCLE</text>
+  <text x="330" y="44" font-size="12" fill="var(--muted,#64748B)">subject: THE HARNESS · days → quarters</text>
+
+  <g>
+    <rect x="44" y="60" width="176" height="50" rx="9" fill="var(--paper,#FFF)" stroke="var(--p3,#0F766E)" stroke-width="1.5"/>
+    <text x="132" y="82" text-anchor="middle" font-size="13.5" font-weight="660" fill="var(--p3,#0F766E)">7 · OBSERVE</text>
+    <text x="132" y="99" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">drift · drills · recurrence</text>
+
+    <rect x="248" y="60" width="176" height="50" rx="9" fill="var(--paper,#FFF)" stroke="var(--p3,#0F766E)" stroke-width="1.5"/>
+    <text x="336" y="82" text-anchor="middle" font-size="13.5" font-weight="660" fill="var(--p3,#0F766E)">8 · STEER</text>
+    <text x="336" y="99" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">install · and RETIRE</text>
+
+    <rect x="516" y="60" width="176" height="50" rx="9" fill="var(--paper,#FFF)" stroke="var(--p3,#0F766E)" stroke-width="1.5"/>
+    <text x="604" y="82" text-anchor="middle" font-size="13.5" font-weight="660" fill="var(--p3,#0F766E)">9 · GOVERN</text>
+    <text x="604" y="99" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">autonomy · incidents</text>
+
+    <rect x="720" y="60" width="176" height="50" rx="9" fill="var(--paper,#FFF)" stroke="var(--p3,#0F766E)" stroke-width="1.5"/>
+    <text x="808" y="82" text-anchor="middle" font-size="13.5" font-weight="660" fill="var(--p3,#0F766E)">10 · EVOLVE</text>
+    <text x="808" y="99" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">templates · platform</text>
+
+    <g stroke="var(--p3,#0F766E)" stroke-width="1.8" marker-end="url(#ar5)" fill="none">
+      <path d="M222 85 H244"/><path d="M426 85 H512"/><path d="M694 85 H716"/>
+    </g>
+  </g>
+  <text x="470" y="80" text-anchor="middle" font-size="10.5" font-style="italic" fill="var(--p3,#0F766E)">machine-paced ▲ · human-paced ▼</text>
+
+  <!-- INNER -->
+  <rect x="120" y="160" width="700" height="146" rx="12"
+        fill="var(--p2-wash,#EEF2FF)" stroke="var(--p2,#4338CA)" stroke-width="2"/>
+  <text x="142" y="186" font-size="13" font-weight="720" fill="var(--p2,#4338CA)" letter-spacing=".05em">
+    INNER LOOP — THE DELEGATION CYCLE</text>
+  <text x="470" y="186" font-size="11.5" fill="var(--muted,#64748B)">subject: THE SOFTWARE · minutes → hours</text>
+
+  <g font-size="11.5" font-weight="640">
+    <rect x="142" y="204" width="98" height="42" rx="8" fill="var(--paper,#FFF)" stroke="var(--p2,#4338CA)" stroke-width="1.3"/>
+    <text x="191" y="223" text-anchor="middle" fill="var(--p2,#4338CA)">INTENT</text>
+    <text x="191" y="238" text-anchor="middle" font-size="9.5" font-weight="400" fill="var(--muted,#64748B)">held-out set</text>
+
+    <rect x="252" y="204" width="98" height="42" rx="8" fill="var(--paper,#FFF)" stroke="var(--p2,#4338CA)" stroke-width="1.3"/>
+    <text x="301" y="223" text-anchor="middle" fill="var(--p2,#4338CA)">GROUND</text>
+    <text x="301" y="238" text-anchor="middle" font-size="9.5" font-weight="400" fill="var(--muted,#64748B)">context · graph</text>
+
+    <rect x="362" y="204" width="98" height="42" rx="8" fill="var(--paper,#FFF)" stroke="var(--p2,#4338CA)" stroke-width="1.3"/>
+    <text x="411" y="223" text-anchor="middle" fill="var(--p2,#4338CA)">DECOMPOSE</text>
+    <text x="411" y="238" text-anchor="middle" font-size="9.5" font-weight="400" fill="var(--muted,#64748B)">bound the task</text>
+
+    <rect x="472" y="204" width="98" height="42" rx="8" fill="var(--p1-wash,#FFF1F2)" stroke="var(--p1,#BE123C)" stroke-width="1.8"/>
+    <text x="521" y="223" text-anchor="middle" fill="var(--p1,#BE123C)">GENERATE</text>
+    <text x="521" y="238" text-anchor="middle" font-size="9.5" font-weight="400" fill="var(--p1,#BE123C)">stochastic</text>
+
+    <rect x="582" y="204" width="98" height="42" rx="8" fill="var(--paper,#FFF)" stroke="var(--p2,#4338CA)" stroke-width="1.3"/>
+    <text x="631" y="223" text-anchor="middle" fill="var(--p2,#4338CA)">VERIFY</text>
+    <text x="631" y="238" text-anchor="middle" font-size="9.5" font-weight="400" fill="var(--muted,#64748B)">by exception</text>
+
+    <rect x="692" y="204" width="106" height="42" rx="8" fill="var(--gA-wash,#ECFDF5)" stroke="var(--gA,#047857)" stroke-width="1.8"/>
+    <text x="745" y="223" text-anchor="middle" fill="var(--gA,#047857)">INTEGRATE</text>
+    <text x="745" y="238" text-anchor="middle" font-size="9.5" font-weight="400" fill="var(--gA,#047857)">deterministic</text>
+  </g>
+  <g stroke="var(--p2,#4338CA)" stroke-width="1.5" marker-end="url(#ar5b)" fill="none" opacity=".7">
+    <path d="M242 225 H250"/><path d="M352 225 H360"/><path d="M462 225 H470"/>
+    <path d="M572 225 H580"/><path d="M682 225 H690"/>
+  </g>
+  <text x="470" y="272" text-anchor="middle" font-size="11" fill="var(--muted,#64748B)">
+    variety is REDUCED ← ← ← · INJECTED · → → → COLLAPSED — the randomness comes to rest at the merge gate</text>
+  <text x="470" y="292" text-anchor="middle" font-size="11.5" font-style="italic" font-weight="600" fill="var(--p2,#4338CA)">
+    surprise at the output is a diagnostic about phases 1–3, never about the model</text>
+
+  <!-- artefacts: the only connection -->
+  <path d="M470 306 V336" stroke="var(--p5,#B45309)" stroke-width="2.2" marker-end="url(#ar5)"/>
+  <rect x="230" y="336" width="480" height="66" rx="10"
+        fill="var(--p5-wash,#FFFBEB)" stroke="var(--p5,#B45309)" stroke-width="1.8"/>
+  <text x="470" y="358" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--p5,#B45309)">
+    ARTEFACTS — the loops' only connection</text>
+  <text x="470" y="376" text-anchor="middle" font-size="11.5" fill="var(--muted,#64748B)">
+    retrieval traces · execution traces · sensor reports · escalations · recurrence counts</text>
+  <text x="470" y="394" text-anchor="middle" font-size="11.5" font-style="italic" fill="var(--p1,#BE123C)">
+    no artefacts → no outer loop. Not a weak one — none.</text>
+  <path d="M230 369 H60 V110" stroke="var(--p5,#B45309)" stroke-width="1.8" fill="none"
+        marker-end="url(#ar5)" opacity=".65"/>
+</svg>

@@ -1,0 +1,915 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Agentic Development Lifecycle</title>
+<meta name="description" content="An evidence-graded account of building software with agents.">
+<link rel="canonical" href="https://neam-lang.github.io/The-Agentic-Development-Lifecycle/">
+<meta name="theme-color" content="#0B1220" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta property="og:type" content="book">
+<meta property="og:site_name" content="The Agentic Development Lifecycle">
+<meta property="og:title" content="The Agentic Development Lifecycle">
+<meta property="og:description" content="An evidence-graded account of building software with agents.">
+<meta property="og:url" content="https://neam-lang.github.io/The-Agentic-Development-Lifecycle/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The Agentic Development Lifecycle">
+<meta name="twitter:description" content="An evidence-graded account of building software with agents.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230F172A'/%3E%3Ccircle cx='16' cy='16' r='9.5' fill='none' stroke='%234338CA' stroke-width='2.4'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%230F766E'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="masthead"><div class="wrap">
+  <a class="brand" href="index.html"><span class="adlc">ADLC</span>The Agentic Development Lifecycle</a>
+  <nav class="mast-nav">
+    <a href="index.html#chapters">Chapters</a>
+    <a href="index.html#appendices">Appendices</a>
+    <a href="index.html#paths">Reading paths</a>
+    <button id="theme-toggle" title="Toggle theme">◐</button>
+  </nav>
+</div></header>
+
+<main>
+<div class="wrap">
+  <div class="hero">
+    <h1>The Agentic Development Lifecycle</h1>
+    <p class="sub">Delegated execution under human supervision — an evidence-graded
+    account of what changes when agents become the primary labour of software
+    engineering, and what has to be built to replace what stopped working.</p>
+    <div class="thesis"><strong>The spine.</strong> SDLC assumed the bottleneck was
+    producing code. ADLC assumes the bottleneck is <em>verifying and directing</em> it.</div>
+    <div class="stat-row">
+      <div class="stat"><b>28</b><span>Chapters</span></div>
+      <div class="stat"><b>5</b><span>Appendices</span></div>
+      <div class="stat"><b>126,151</b><span>Words</span></div>
+      <div class="stat"><b>21</b><span>Corrections logged</span></div>
+      <div class="stat"><b>A–D</b><span>Evidence graded</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <section id="argument">
+    <h2>The argument in one figure</h2>
+    <p class="lede">One price fell, and six goods that were resting on it fell together.
+    Everything else in the book follows from that.</p>
+    <figure class="diagram"><svg viewBox="0 0 940 452" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="One price fell and six goods resting on it fell together; each must now be bought explicitly."
+     font-family="ui-sans-serif, system-ui, -apple-system, sans-serif">
+  <defs>
+    <marker id="ar1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="var(--muted,#64748B)"/>
+    </marker>
+    <linearGradient id="pillarG" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0"   stop-color="var(--p2,#4338CA)" stop-opacity=".92"/>
+      <stop offset="0.5" stop-color="var(--p1,#BE123C)" stop-opacity=".92"/>
+      <stop offset="1"   stop-color="var(--p5,#B45309)" stop-opacity=".92"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ── the six goods ─────────────────────────────────────────── -->
+  <text x="20" y="22" font-size="11" letter-spacing="1.6"
+        fill="var(--faint,#94A3B8)" font-family="ui-monospace, monospace">
+    SIX GOODS THAT ARRIVED FREE — NONE OF THEM DESIGNED, NONE OF THEM AUDITED
+  </text>
+
+  <g>
+    <!-- 1 scrutiny -->
+    <rect x="20" y="36" width="140" height="62" rx="9"
+          fill="var(--p1-wash,#FFF1F2)" stroke="var(--p1,#BE123C)" stroke-width="1.4"/>
+    <text x="90" y="60" text-anchor="middle" font-size="13.5" font-weight="640" fill="var(--p1,#BE123C)">Scrutiny</text>
+    <text x="90" y="79" text-anchor="middle" font-size="11" fill="var(--muted,#64748B)">effort evidenced</text>
+    <text x="90" y="91" text-anchor="middle" font-size="11" fill="var(--muted,#64748B)">care</text>
+
+    <!-- 2 intent -->
+    <rect x="172" y="36" width="140" height="62" rx="9"
+          fill="var(--p1-wash,#FFF1F2)" stroke="var(--p1,#BE123C)" stroke-width="1.4"/>
+    <text x="242" y="60" text-anchor="middle" font-size="13.5" font-weight="640" fill="var(--p1,#BE123C)">Intent</text>
+    <text x="242" y="79" text-anchor="middle" font-size="11" fill="var(--muted,#64748B)">an author you</text>
+    <text x="242" y="91" text-anchor="middle" font-size="11" fill="var(--muted,#64748B)">could ask</text>
+
+    <!-- 3 pacing -->
+    <rect x="324" y="36" width="140" height="62" rx="9"
+          fill="var(--p1-wash,#FFF1F2)" stroke="var(--p1,#BE123C)" stroke-width="1.4"/>
+    <text x="394" y="60" text-anchor="middle" font-size="13.5" font-weight="640" fill="var(--p1,#BE123C)">Pacing</text>
+    <text x="394" y="79" text-anchor="middle" font-size="11" fill="var(--muted,#64748B)">feedback outran</text>
+    <text x="394" y="91" text-anchor="middle" font-size="11" fill="var(--muted,#64748B)">change</text>
+
+    <!-- 4 trust boundary -->
+    <rect x="476" y="36" width="140" height="62" rx="9"
+          fill="var(--p1-wash,#FFF1F2)" stroke="var(--p1,#BE123C)" stroke-width="1.4"/>
+    <text x="546" y="60" text-anchor="middle" font-size="13.5" font-weight="640" fill="var(--p1,#BE123C)">Trust boundary</text>
+    <text x="546" y="79" text-anchor="middle" font-size="11" fill="var(--muted,#64748B)">reading was never</text>
+    <text x="546" y="91" text-anchor="middle" font-size="11" fill="var(--muted,#64748B)">dangerous</text>
+
+    <!-- 5 homeostasis -->
+    <rect x="628" y="36" width="140" height="62" rx="9"
+          fill="var(--p1-wash,#FFF1F2)" stroke="var(--p1,#BE123C)" stroke-width="1.4"/>
+    <text x="698" y="60" text-anchor="middle" font-size="13.5" font-weight="640" fill="var(--p1,#BE123C)">Homeostasis</text>
+    <text x="698" y="79" text-anchor="middle" font-size="11" fill="var(--muted,#64748B)">someone cleaned</text>
+    <text x="698" y="91" text-anchor="middle" font-size="11" fill="var(--muted,#64748B)">up eventually</text>
+
+    <!-- 6 apprenticeship -->
+    <rect x="780" y="36" width="140" height="62" rx="9"
+          fill="var(--p1-wash,#FFF1F2)" stroke="var(--p1,#BE123C)" stroke-width="1.4"/>
+    <text x="850" y="60" text-anchor="middle" font-size="13.5" font-weight="640" fill="var(--p1,#BE123C)">Apprenticeship</text>
+    <text x="850" y="79" text-anchor="middle" font-size="11" fill="var(--muted,#64748B)">juniors learned by</text>
+    <text x="850" y="91" text-anchor="middle" font-size="11" fill="var(--muted,#64748B)">doing cheap work</text>
+  </g>
+
+  <!-- legs down to the pillar -->
+  <g stroke="var(--line,#E2E8F0)" stroke-width="1.6">
+    <path d="M90 98 V128"/><path d="M242 98 V128"/><path d="M394 98 V128"/>
+    <path d="M546 98 V128"/><path d="M698 98 V128"/><path d="M850 98 V128"/>
+  </g>
+
+  <!-- ── the pillar ─────────────────────────────────────────────── -->
+  <rect x="20" y="128" width="900" height="46" rx="8" fill="url(#pillarG)"/>
+  <text x="470" y="157" text-anchor="middle" font-size="15" font-weight="700"
+        fill="var(--paper,#FFFFFF)" letter-spacing=".04em">THE COST OF PRODUCING CODE</text>
+
+  <!-- the fracture -->
+  <path d="M20 178 L120 190 L200 176 L300 194 L400 178 L500 196 L600 178 L700 192 L800 176 L920 190"
+        fill="none" stroke="var(--p1,#BE123C)" stroke-width="2.4" stroke-dasharray="7 5" opacity=".85"/>
+  <text x="470" y="214" text-anchor="middle" font-size="13.5" font-style="italic"
+        fill="var(--p1,#BE123C)" font-weight="600">the price fell — and nobody was billed for what it had been buying</text>
+
+  <!-- ── the replacements ───────────────────────────────────────── -->
+  <text x="20" y="252" font-size="11" letter-spacing="1.6"
+        fill="var(--faint,#94A3B8)" font-family="ui-monospace, monospace">
+    EACH MUST NOW BE BOUGHT DELIBERATELY — WHICH IS WHAT A LIFECYCLE IS FOR
+  </text>
+
+  <g stroke="var(--muted,#64748B)" stroke-width="1.3" marker-end="url(#ar1)" opacity=".55">
+    <path d="M90 224 V264"/><path d="M242 224 V264"/><path d="M394 224 V264"/>
+    <path d="M546 224 V264"/><path d="M698 224 V264"/><path d="M850 224 V264"/>
+  </g>
+
+  <g>
+    <rect x="20" y="268" width="140" height="66" rx="9"
+          fill="var(--p2-wash,#EEF2FF)" stroke="var(--p2,#4338CA)" stroke-width="1.4"/>
+    <text x="90" y="292" text-anchor="middle" font-size="13" font-weight="640" fill="var(--p2,#4338CA)">Sensors</text>
+    <text x="90" y="310" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">blocking, drilled</text>
+    <text x="90" y="325" text-anchor="middle" font-size="10" font-family="ui-monospace, monospace" fill="var(--faint,#94A3B8)">Ch 7 · 8</text>
+
+    <rect x="172" y="268" width="140" height="66" rx="9"
+          fill="var(--p2-wash,#EEF2FF)" stroke="var(--p2,#4338CA)" stroke-width="1.4"/>
+    <text x="242" y="292" text-anchor="middle" font-size="13" font-weight="640" fill="var(--p2,#4338CA)">Specifications</text>
+    <text x="242" y="310" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">held-out, before</text>
+    <text x="242" y="325" text-anchor="middle" font-size="10" font-family="ui-monospace, monospace" fill="var(--faint,#94A3B8)">Ch 8 · 12</text>
+
+    <rect x="324" y="268" width="140" height="66" rx="9"
+          fill="var(--p3-wash,#F0FDFA)" stroke="var(--p3,#0F766E)" stroke-width="1.4"/>
+    <text x="394" y="292" text-anchor="middle" font-size="13" font-weight="640" fill="var(--p3,#0F766E)">Ordered controls</text>
+    <text x="394" y="310" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">by cost and speed</text>
+    <text x="394" y="325" text-anchor="middle" font-size="10" font-family="ui-monospace, monospace" fill="var(--faint,#94A3B8)">Ch 8 · 12</text>
+
+    <rect x="476" y="268" width="140" height="66" rx="9"
+          fill="var(--p3-wash,#F0FDFA)" stroke="var(--p3,#0F766E)" stroke-width="1.4"/>
+    <text x="546" y="292" text-anchor="middle" font-size="13" font-weight="640" fill="var(--p3,#0F766E)">Capability scoping</text>
+    <text x="546" y="310" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">by effect, not name</text>
+    <text x="546" y="325" text-anchor="middle" font-size="10" font-family="ui-monospace, monospace" fill="var(--faint,#94A3B8)">Ch 11 · 13</text>
+
+    <rect x="628" y="268" width="140" height="66" rx="9"
+          fill="var(--p5-wash,#FFFBEB)" stroke="var(--p5,#B45309)" stroke-width="1.4"/>
+    <text x="698" y="292" text-anchor="middle" font-size="13" font-weight="640" fill="var(--p5,#B45309)">Drift detection</text>
+    <text x="698" y="310" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">standing mandate</text>
+    <text x="698" y="325" text-anchor="middle" font-size="10" font-family="ui-monospace, monospace" fill="var(--faint,#94A3B8)">Ch 4 · 12</text>
+
+    <rect x="780" y="268" width="140" height="66" rx="9"
+          fill="var(--p4-wash,#F5F3FF)" stroke="var(--p4,#7C3AED)" stroke-width="1.4"/>
+    <text x="850" y="292" text-anchor="middle" font-size="13" font-weight="640" fill="var(--p4,#7C3AED)">Deliberate practice</text>
+    <text x="850" y="310" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">attempt first</text>
+    <text x="850" y="325" text-anchor="middle" font-size="10" font-family="ui-monospace, monospace" fill="var(--faint,#94A3B8)">Ch 19 · 20</text>
+  </g>
+
+  <!-- ── the definition ─────────────────────────────────────────── -->
+  <rect x="20" y="358" width="900" height="72" rx="10"
+        fill="var(--wash,#F8FAFC)" stroke="var(--p2,#4338CA)" stroke-width="1.6"/>
+  <text x="470" y="386" text-anchor="middle" font-size="14.5" font-weight="700" fill="var(--p2,#4338CA)">
+    ADLC is the discipline of explicitly buying what the cost of writing code used to provide for free.
+  </text>
+  <text x="470" y="410" text-anchor="middle" font-size="12.5" fill="var(--muted,#64748B)">
+    Nobody removed six controls. One thing was withdrawn, and six goods were resting on it.
+  </text>
+</svg>
+
+      <figcaption>Figure 1 — The spine. The cost of producing code silently purchased six
+      controls; when it collapsed, all six failed at once.</figcaption>
+    </figure>
+  </section>
+
+  <section id="pillars">
+    <h2>Four rings of control</h2>
+    <p class="lede">Each ring exists because the one inside it saturates, and each outer
+    ring makes the inner ones cheaper. This is an argument, not a taxonomy.</p>
+    <figure class="diagram"><svg viewBox="0 0 940 470" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="Four nested rings of control: structure, graph, harness, context, around the model."
+     font-family="ui-sans-serif, system-ui, -apple-system, sans-serif">
+  <defs>
+    <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="var(--muted,#64748B)"/>
+    </marker>
+  </defs>
+
+  <!-- STRUCTURE -->
+  <rect x="20" y="20" width="620" height="430" rx="14"
+        fill="var(--p2-wash,#EEF2FF)" stroke="var(--p2,#4338CA)" stroke-width="2"/>
+  <text x="40" y="46" font-size="13" font-weight="720" fill="var(--p2,#4338CA)" letter-spacing=".05em">STRUCTURE</text>
+  <text x="150" y="46" font-size="12" fill="var(--muted,#64748B)">reduce what must be known · Ch 10</text>
+
+  <!-- GRAPH -->
+  <rect x="46" y="60" width="568" height="368" rx="12"
+        fill="var(--p3-wash,#F0FDFA)" stroke="var(--p3,#0F766E)" stroke-width="2"/>
+  <text x="66" y="86" font-size="13" font-weight="720" fill="var(--p3,#0F766E)" letter-spacing=".05em">GRAPH</text>
+  <text x="146" y="86" font-size="12" fill="var(--muted,#64748B)">make what remains findable · Ch 9</text>
+
+  <!-- HARNESS -->
+  <rect x="72" y="100" width="516" height="306" rx="11"
+        fill="var(--p5-wash,#FFFBEB)" stroke="var(--p5,#B45309)" stroke-width="2"/>
+  <text x="92" y="126" font-size="13" font-weight="720" fill="var(--p5,#B45309)" letter-spacing=".05em">HARNESS</text>
+  <text x="186" y="126" font-size="12" fill="var(--muted,#64748B)">steer, then check · Ch 7–8</text>
+
+  <!-- CONTEXT -->
+  <rect x="98" y="140" width="464" height="244" rx="10"
+        fill="var(--p4-wash,#F5F3FF)" stroke="var(--p4,#7C3AED)" stroke-width="2"/>
+  <text x="118" y="166" font-size="13" font-weight="720" fill="var(--p4,#7C3AED)" letter-spacing=".05em">CONTEXT</text>
+  <text x="206" y="166" font-size="12" fill="var(--muted,#64748B)">design the payload · Ch 6</text>
+
+  <!-- MODEL -->
+  <rect x="212" y="212" width="236" height="106" rx="10"
+        fill="var(--ink,#0F172A)" opacity=".92"/>
+  <text x="330" y="256" text-anchor="middle" font-size="17" font-weight="700" fill="var(--paper,#FFFFFF)" letter-spacing=".08em">MODEL</text>
+  <text x="330" y="280" text-anchor="middle" font-size="11.5" fill="var(--paper,#FFFFFF)" opacity=".78">not yours · not stable</text>
+  <text x="330" y="298" text-anchor="middle" font-size="11.5" fill="var(--paper,#FFFFFF)" opacity=".78">changes without notice</text>
+
+  <!-- ceiling annotations -->
+  <g font-size="11" fill="var(--muted,#64748B)">
+    <text x="118" y="352">✗ saturates: the whole file scored 12.7% vs 18.0% for a window</text>
+    <text x="92"  y="374">✗ bounded by Ashby — a finite regulator, unbounded generator</text>
+    <text x="66"  y="396">~ reports the structure it is given; makes a tangle navigable, not small</text>
+    <text x="40"  y="418" font-weight="640" fill="var(--p2,#4338CA)">▓ the only ring injection cannot cross</text>
+  </g>
+
+  <!-- right column: the two readings -->
+  <g>
+    <rect x="668" y="20" width="252" height="196" rx="11"
+          fill="var(--wash,#F8FAFC)" stroke="var(--line,#E2E8F0)" stroke-width="1.4"/>
+    <text x="688" y="46" font-size="11.5" font-weight="700" letter-spacing=".08em"
+          fill="var(--ink,#0F172A)" font-family="ui-monospace, monospace">READ OUTWARD</text>
+    <text x="688" y="70" font-size="12.5" fill="var(--muted,#64748B)">Each ring exists because</text>
+    <text x="688" y="88" font-size="12.5" fill="var(--muted,#64748B)">the one inside it has a</text>
+    <text x="688" y="106" font-size="12.5" fill="var(--muted,#64748B)">ceiling.</text>
+    <path d="M690 126 H900" stroke="var(--line,#E2E8F0)" stroke-width="1.2"/>
+    <text x="688" y="150" font-size="11.5" font-weight="700" letter-spacing=".08em"
+          fill="var(--ink,#0F172A)" font-family="ui-monospace, monospace">READ INWARD</text>
+    <text x="688" y="174" font-size="12.5" fill="var(--muted,#64748B)">Each outer ring makes the</text>
+    <text x="688" y="192" font-size="12.5" fill="var(--muted,#64748B)">inner ones cheaper.</text>
+  </g>
+
+  <g>
+    <rect x="668" y="232" width="252" height="218" rx="11"
+          fill="var(--gA-wash,#ECFDF5)" stroke="var(--gA,#047857)" stroke-width="1.6"/>
+    <text x="688" y="258" font-size="11.5" font-weight="700" letter-spacing=".08em"
+          fill="var(--gA,#047857)" font-family="ui-monospace, monospace">CROSSING ALL FOUR</text>
+    <text x="688" y="282" font-size="13.5" font-weight="660" fill="var(--gA,#047857)">Verification &amp; security</text>
+    <text x="688" y="306" font-size="12" fill="var(--muted,#64748B)">Injection defeats every</text>
+    <text x="688" y="323" font-size="12" fill="var(--muted,#64748B)">control that acts on what</text>
+    <text x="688" y="340" font-size="12" fill="var(--muted,#64748B)">an agent <tspan font-style="italic">believes</tspan>, and</text>
+    <text x="688" y="357" font-size="12" fill="var(--muted,#64748B)">cannot defeat one that</text>
+    <text x="688" y="374" font-size="12" fill="var(--muted,#64748B)">bounds what it <tspan font-style="italic">can do</tspan>.</text>
+    <path d="M690 392 H900" stroke="var(--gA,#047857)" stroke-width="1" opacity=".35"/>
+    <text x="688" y="414" font-size="11.5" fill="var(--muted,#64748B)">A poisoned context cannot</text>
+    <text x="688" y="431" font-size="11.5" fill="var(--muted,#64748B)">grant credentials it lacks.</text>
+  </g>
+</svg>
+
+      <figcaption>Figure 2 — Context saturates, so the harness exists; the harness is bounded
+      by Ashby, so structure exists. Verification and security cross all four.</figcaption>
+    </figure>
+  </section>
+
+  <section id="evidence">
+    <h2>The evidence, plotted</h2>
+    <p class="lede">Five studies, one gradient. The two most rigorous sit at opposite ends —
+    rigour does not determine sign, task selection does.</p>
+    <figure class="diagram"><svg viewBox="0 0 940 452" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="Measured effect of AI assistance declines as task realism rises, from +55.8% to -19%."
+     font-family="ui-sans-serif, system-ui, -apple-system, sans-serif">
+
+  <!-- plot frame -->
+  <line x1="96" y1="46" x2="96" y2="332" stroke="var(--line,#E2E8F0)" stroke-width="1.4"/>
+  <line x1="96" y1="332" x2="892" y2="332" stroke="var(--line,#E2E8F0)" stroke-width="1.4"/>
+
+  <!-- gridlines + y labels -->
+  <g font-size="11" font-family="ui-monospace, monospace" fill="var(--faint,#94A3B8)">
+    <line x1="96" y1="63"  x2="892" y2="63"  stroke="var(--line-soft,#F1F5F9)"/>
+    <text x="88" y="67"  text-anchor="end">+56%</text>
+    <line x1="96" y1="112" x2="892" y2="112" stroke="var(--line-soft,#F1F5F9)"/>
+    <text x="88" y="116" text-anchor="end">+40%</text>
+    <line x1="96" y1="156" x2="892" y2="156" stroke="var(--line-soft,#F1F5F9)"/>
+    <text x="88" y="160" text-anchor="end">+26%</text>
+    <line x1="96" y1="296" x2="892" y2="296" stroke="var(--line-soft,#F1F5F9)"/>
+    <text x="88" y="300" text-anchor="end">−19%</text>
+  </g>
+
+  <!-- zero line -->
+  <line x1="96" y1="237" x2="892" y2="237" stroke="var(--ink,#0F172A)"
+        stroke-width="1.6" stroke-dasharray="6 5" opacity=".5"/>
+  <text x="88" y="241" text-anchor="end" font-size="11.5" font-weight="700"
+        font-family="ui-monospace, monospace" fill="var(--ink,#0F172A)">0</text>
+
+  <!-- trend -->
+  <path d="M170 63 C 300 100, 400 150, 620 171 S 740 250, 800 296"
+        fill="none" stroke="var(--p1,#BE123C)" stroke-width="2.6" opacity=".28"/>
+
+  <!-- points -->
+  <g>
+    <!-- Peng +55.8 -->
+    <circle cx="170" cy="63" r="8" fill="var(--gA,#047857)"/>
+    <text x="170" y="40" text-anchor="middle" font-size="15" font-weight="740" fill="var(--gA,#047857)">+55.8%</text>
+    <text x="170" y="88" text-anchor="middle" font-size="11.5" fill="var(--ink-soft,#334155)">Peng et al.</text>
+    <text x="170" y="103" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">HTTP server,</text>
+    <text x="170" y="116" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">recruited devs</text>
+
+    <!-- Heilman +40 -->
+    <circle cx="320" cy="112" r="7" fill="var(--gB,#0E7490)"/>
+    <text x="320" y="93" text-anchor="middle" font-size="14" font-weight="720" fill="var(--gB,#0E7490)">~+40%</text>
+    <text x="320" y="137" text-anchor="middle" font-size="11.5" fill="var(--ink-soft,#334155)">Heilman et al.</text>
+    <text x="320" y="152" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">16,223 engineers,</text>
+    <text x="320" y="165" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">heaviest-use weeks</text>
+
+    <!-- Cui +26.08 -->
+    <circle cx="470" cy="156" r="8" fill="var(--gA,#047857)"/>
+    <text x="470" y="137" text-anchor="middle" font-size="14" font-weight="720" fill="var(--gA,#047857)">+26.08%</text>
+    <text x="470" y="181" text-anchor="middle" font-size="11.5" fill="var(--ink-soft,#334155)">Cui et al.</text>
+    <text x="470" y="196" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">4,867 devs, 3 RCTs</text>
+    <text x="470" y="209" text-anchor="middle" font-size="10.5" font-style="italic" fill="var(--p5,#B45309)">SE 10.3%</text>
+
+    <!-- Google +21, hollow = lost significance -->
+    <circle cx="620" cy="171" r="8" fill="var(--paper,#FFF)" stroke="var(--gA,#047857)" stroke-width="2.4"/>
+    <text x="620" y="152" text-anchor="middle" font-size="14" font-weight="720" fill="var(--gA,#047857)">+21%</text>
+    <text x="620" y="196" text-anchor="middle" font-size="11.5" fill="var(--ink-soft,#334155)">Google RCT</text>
+    <text x="620" y="211" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">96 engineers,</text>
+    <text x="620" y="224" text-anchor="middle" font-size="10.5" font-style="italic" fill="var(--p5,#B45309)">loses significance</text>
+
+    <!-- METR -19 -->
+    <circle cx="800" cy="296" r="8" fill="var(--p1,#BE123C)"/>
+    <text x="800" y="322" text-anchor="middle" font-size="15" font-weight="740" fill="var(--p1,#BE123C)">−19%</text>
+    <text x="800" y="277" text-anchor="middle" font-size="11.5" fill="var(--ink-soft,#334155)">METR RCT</text>
+    <text x="800" y="262" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">16 devs, own repos,</text>
+    <text x="800" y="249" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">5 years' familiarity</text>
+  </g>
+
+  <!-- x axis label -->
+  <text x="96"  y="356" font-size="11.5" fill="var(--muted,#64748B)">greenfield toy task</text>
+  <text x="494" y="356" text-anchor="middle" font-size="11.5" letter-spacing=".06em"
+        font-family="ui-monospace, monospace" fill="var(--faint,#94A3B8)">
+    ◄──── TASK REALISM · REPOSITORY FAMILIARITY ────►</text>
+  <text x="892" y="356" text-anchor="end" font-size="11.5" fill="var(--muted,#64748B)">expert-owned brownfield</text>
+
+  <!-- the finding -->
+  <rect x="96" y="374" width="796" height="66" rx="9"
+        fill="var(--p1-wash,#FFF1F2)" stroke="var(--p1,#BE123C)" stroke-width="1.5"/>
+  <text x="116" y="394" font-size="13" font-weight="700" fill="var(--p1,#BE123C)">
+    The two most rigorously controlled studies sit at opposite ends.</text>
+  <text x="116" y="410" font-size="12.5" fill="var(--muted,#64748B)">
+    Rigour does not determine sign — task selection does. So the question is never</text>
+  <text x="116" y="427" font-size="12.5" fill="var(--muted,#64748B)">
+    "is there an RCT?" but "whose codebase was it?"</text>
+</svg>
+
+      <figcaption>Figure 3 — Measured effect declines monotonically as the measurement
+      approaches real work. No single point represents the line.</figcaption>
+    </figure>
+  </section>
+
+  <section id="quadrant">
+    <h2>What teams actually built</h2>
+    <p class="lede">Böckeler's quadrant, populated with adoption data from 2,853
+    repositories. The field invested in the weakest cell at roughly 29 to 1.</p>
+    <figure class="diagram"><svg viewBox="0 0 940 452" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="Guides versus sensors, computational versus inferential, with adoption data showing context files at 90.6% and hooks at 0.9 to 3.2%."
+     font-family="ui-sans-serif, system-ui, -apple-system, sans-serif">
+
+  <!-- column headers -->
+  <text x="330" y="30" text-anchor="middle" font-size="13" font-weight="720"
+        fill="var(--p4,#7C3AED)" letter-spacing=".05em">GUIDES — feedforward</text>
+  <text x="330" y="47" text-anchor="middle" font-size="11.5" fill="var(--muted,#64748B)">act before generation · prevent</text>
+  <text x="700" y="30" text-anchor="middle" font-size="13" font-weight="720"
+        fill="var(--gA,#047857)" letter-spacing=".05em">SENSORS — feedback</text>
+  <text x="700" y="47" text-anchor="middle" font-size="11.5" fill="var(--muted,#64748B)">act after · detect and self-correct</text>
+
+  <!-- row headers -->
+  <text x="24" y="140" font-size="13" font-weight="720" fill="var(--p3,#0F766E)">COMPUTATIONAL</text>
+  <text x="24" y="158" font-size="11" fill="var(--muted,#64748B)">deterministic</text>
+  <text x="24" y="172" font-size="11" fill="var(--muted,#64748B)">ms–seconds</text>
+  <text x="24" y="186" font-size="11" fill="var(--muted,#64748B)">reliable</text>
+
+  <text x="24" y="316" font-size="13" font-weight="720" fill="var(--p5,#B45309)">INFERENTIAL</text>
+  <text x="24" y="334" font-size="11" fill="var(--muted,#64748B)">probabilistic</text>
+  <text x="24" y="348" font-size="11" fill="var(--muted,#64748B)">slower</text>
+  <text x="24" y="362" font-size="11" fill="var(--muted,#64748B)">semantically rich</text>
+
+  <!-- Q1 computational guides -->
+  <rect x="160" y="60" width="340" height="180" rx="11"
+        fill="var(--p3-wash,#F0FDFA)" stroke="var(--p3,#0F766E)" stroke-width="1.6"/>
+  <text x="180" y="86" font-size="12" fill="var(--ink-soft,#334155)">language servers · CLIs · scripts</text>
+  <text x="180" y="106" font-size="12" fill="var(--ink-soft,#334155)">codemods · scaffolds · templates</text>
+  <text x="180" y="126" font-size="12" fill="var(--ink-soft,#334155)">types that make bad states</text>
+  <text x="180" y="143" font-size="12" fill="var(--ink-soft,#334155)">unrepresentable</text>
+  <rect x="180" y="170" width="150" height="46" rx="7"
+        fill="var(--paper,#FFF)" stroke="var(--p3,#0F766E)" stroke-width="1.2"/>
+  <text x="255" y="189" text-anchor="middle" font-size="11.5" font-weight="640" fill="var(--p3,#0F766E)">MCP</text>
+  <text x="255" y="207" text-anchor="middle" font-size="14" font-weight="740" font-family="ui-monospace, monospace" fill="var(--p3,#0F766E)">2.3–11.6%</text>
+
+  <!-- Q2 computational sensors — the empty cell -->
+  <rect x="530" y="60" width="340" height="180" rx="11"
+        fill="var(--gA-wash,#ECFDF5)" stroke="var(--gA,#047857)" stroke-width="2.2"/>
+  <text x="550" y="86" font-size="12" fill="var(--ink-soft,#334155)">linters · type checkers · tests</text>
+  <text x="550" y="106" font-size="12" fill="var(--ink-soft,#334155)">static analysis · fitness functions</text>
+  <text x="550" y="126" font-size="12" font-weight="640" fill="var(--gA,#047857)">highest authority · never ages</text>
+  <rect x="550" y="152" width="300" height="66" rx="7"
+        fill="var(--paper,#FFF)" stroke="var(--p1,#BE123C)" stroke-width="1.8"/>
+  <text x="700" y="173" text-anchor="middle" font-size="11.5" font-weight="640" fill="var(--p1,#BE123C)">HOOKS — sensors inside the agent loop</text>
+  <text x="700" y="198" text-anchor="middle" font-size="20" font-weight="760" font-family="ui-monospace, monospace" fill="var(--p1,#BE123C)">0.9 – 3.2%</text>
+  <text x="700" y="212" text-anchor="middle" font-size="10.5" font-style="italic" fill="var(--p1,#BE123C)">least adopted of all eight mechanisms</text>
+
+  <!-- Q3 inferential guides — the crowded cell -->
+  <rect x="160" y="256" width="340" height="180" rx="11"
+        fill="var(--p4-wash,#F5F3FF)" stroke="var(--p4,#7C3AED)" stroke-width="2.2"/>
+  <text x="180" y="282" font-size="12" fill="var(--ink-soft,#334155)">principles · rules · how-to guides</text>
+  <text x="180" y="302" font-size="12" fill="var(--ink-soft,#334155)">reference documentation</text>
+  <text x="180" y="322" font-size="12" font-weight="640" fill="var(--p4,#7C3AED)">lowest authority · ages fastest</text>
+  <rect x="180" y="348" width="300" height="66" rx="7"
+        fill="var(--paper,#FFF)" stroke="var(--p4,#7C3AED)" stroke-width="1.8"/>
+  <text x="330" y="369" text-anchor="middle" font-size="11.5" font-weight="640" fill="var(--p4,#7C3AED)">CONTEXT FILES — CLAUDE.md, AGENTS.md</text>
+  <text x="330" y="394" text-anchor="middle" font-size="20" font-weight="760" font-family="ui-monospace, monospace" fill="var(--p4,#7C3AED)">90.6%</text>
+  <text x="330" y="408" text-anchor="middle" font-size="10.5" font-style="italic" fill="var(--p4,#7C3AED)">present in 2,586 of 2,853 repositories</text>
+
+  <!-- Q4 inferential sensors -->
+  <rect x="530" y="256" width="340" height="180" rx="11"
+        fill="var(--p5-wash,#FFFBEB)" stroke="var(--p5,#B45309)" stroke-width="1.6"/>
+  <text x="550" y="282" font-size="12" fill="var(--ink-soft,#334155)">review agents · LLM-as-judge</text>
+  <text x="550" y="302" font-size="12" fill="var(--ink-soft,#334155)">semantic analysis</text>
+  <text x="550" y="322" font-size="12" fill="var(--muted,#64748B)">advisory adds review load;</text>
+  <text x="550" y="339" font-size="12" fill="var(--muted,#64748B)">only blocking removes it</text>
+  <rect x="550" y="360" width="150" height="46" rx="7"
+        fill="var(--paper,#FFF)" stroke="var(--p5,#B45309)" stroke-width="1.2"/>
+  <text x="625" y="379" text-anchor="middle" font-size="11.5" font-weight="640" fill="var(--p5,#B45309)">Subagents</text>
+  <text x="625" y="397" text-anchor="middle" font-size="14" font-weight="740" font-family="ui-monospace, monospace" fill="var(--p5,#B45309)">6.6–7.4%</text>
+
+  <!-- the ratio callout -->
+  <path d="M330 348 C 400 300, 560 268, 690 218" fill="none"
+        stroke="var(--p1,#BE123C)" stroke-width="2" stroke-dasharray="6 4" opacity=".6"/>
+  <rect x="380" y="228" width="200" height="34" rx="8"
+        fill="var(--p1,#BE123C)"/>
+  <text x="480" y="250" text-anchor="middle" font-size="14.5" font-weight="740" fill="var(--paper,#FFFFFF)">
+    roughly 29 : 1</text>
+</svg>
+
+      <figcaption>Figure 4 — Guides assert; sensors observe. Adoption concentrates in the
+      cell with the least authority and the fastest depreciation.</figcaption>
+    </figure>
+  </section>
+
+  <section id="loops">
+    <h2>The double loop</h2>
+    <p class="lede">The inner loop changes the software. The outer loop changes what governs
+    its construction. Their only connection is artefacts.</p>
+    <figure class="diagram"><svg viewBox="0 0 940 440" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="The inner delegation cycle inside the outer steering cycle, connected only by artefacts."
+     font-family="ui-sans-serif, system-ui, -apple-system, sans-serif">
+  <defs>
+    <marker id="ar5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="var(--p3,#0F766E)"/>
+    </marker>
+    <marker id="ar5b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="var(--p2,#4338CA)"/>
+    </marker>
+  </defs>
+
+  <!-- OUTER -->
+  <rect x="18" y="18" width="904" height="404" rx="14"
+        fill="var(--p3-wash,#F0FDFA)" stroke="var(--p3,#0F766E)" stroke-width="2"/>
+  <text x="40" y="44" font-size="13" font-weight="720" fill="var(--p3,#0F766E)" letter-spacing=".05em">
+    OUTER LOOP — THE STEERING CYCLE</text>
+  <text x="330" y="44" font-size="12" fill="var(--muted,#64748B)">subject: THE HARNESS · days → quarters</text>
+
+  <g>
+    <rect x="44" y="60" width="176" height="50" rx="9" fill="var(--paper,#FFF)" stroke="var(--p3,#0F766E)" stroke-width="1.5"/>
+    <text x="132" y="82" text-anchor="middle" font-size="13.5" font-weight="660" fill="var(--p3,#0F766E)">7 · OBSERVE</text>
+    <text x="132" y="99" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">drift · drills · recurrence</text>
+
+    <rect x="248" y="60" width="176" height="50" rx="9" fill="var(--paper,#FFF)" stroke="var(--p3,#0F766E)" stroke-width="1.5"/>
+    <text x="336" y="82" text-anchor="middle" font-size="13.5" font-weight="660" fill="var(--p3,#0F766E)">8 · STEER</text>
+    <text x="336" y="99" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">install · and RETIRE</text>
+
+    <rect x="516" y="60" width="176" height="50" rx="9" fill="var(--paper,#FFF)" stroke="var(--p3,#0F766E)" stroke-width="1.5"/>
+    <text x="604" y="82" text-anchor="middle" font-size="13.5" font-weight="660" fill="var(--p3,#0F766E)">9 · GOVERN</text>
+    <text x="604" y="99" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">autonomy · incidents</text>
+
+    <rect x="720" y="60" width="176" height="50" rx="9" fill="var(--paper,#FFF)" stroke="var(--p3,#0F766E)" stroke-width="1.5"/>
+    <text x="808" y="82" text-anchor="middle" font-size="13.5" font-weight="660" fill="var(--p3,#0F766E)">10 · EVOLVE</text>
+    <text x="808" y="99" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">templates · platform</text>
+
+    <g stroke="var(--p3,#0F766E)" stroke-width="1.8" marker-end="url(#ar5)" fill="none">
+      <path d="M222 85 H244"/><path d="M426 85 H512"/><path d="M694 85 H716"/>
+    </g>
+  </g>
+  <text x="470" y="80" text-anchor="middle" font-size="10.5" font-style="italic" fill="var(--p3,#0F766E)">machine-paced ▲ · human-paced ▼</text>
+
+  <!-- INNER -->
+  <rect x="120" y="160" width="700" height="146" rx="12"
+        fill="var(--p2-wash,#EEF2FF)" stroke="var(--p2,#4338CA)" stroke-width="2"/>
+  <text x="142" y="186" font-size="13" font-weight="720" fill="var(--p2,#4338CA)" letter-spacing=".05em">
+    INNER LOOP — THE DELEGATION CYCLE</text>
+  <text x="470" y="186" font-size="11.5" fill="var(--muted,#64748B)">subject: THE SOFTWARE · minutes → hours</text>
+
+  <g font-size="11.5" font-weight="640">
+    <rect x="142" y="204" width="98" height="42" rx="8" fill="var(--paper,#FFF)" stroke="var(--p2,#4338CA)" stroke-width="1.3"/>
+    <text x="191" y="223" text-anchor="middle" fill="var(--p2,#4338CA)">INTENT</text>
+    <text x="191" y="238" text-anchor="middle" font-size="9.5" font-weight="400" fill="var(--muted,#64748B)">held-out set</text>
+
+    <rect x="252" y="204" width="98" height="42" rx="8" fill="var(--paper,#FFF)" stroke="var(--p2,#4338CA)" stroke-width="1.3"/>
+    <text x="301" y="223" text-anchor="middle" fill="var(--p2,#4338CA)">GROUND</text>
+    <text x="301" y="238" text-anchor="middle" font-size="9.5" font-weight="400" fill="var(--muted,#64748B)">context · graph</text>
+
+    <rect x="362" y="204" width="98" height="42" rx="8" fill="var(--paper,#FFF)" stroke="var(--p2,#4338CA)" stroke-width="1.3"/>
+    <text x="411" y="223" text-anchor="middle" fill="var(--p2,#4338CA)">DECOMPOSE</text>
+    <text x="411" y="238" text-anchor="middle" font-size="9.5" font-weight="400" fill="var(--muted,#64748B)">bound the task</text>
+
+    <rect x="472" y="204" width="98" height="42" rx="8" fill="var(--p1-wash,#FFF1F2)" stroke="var(--p1,#BE123C)" stroke-width="1.8"/>
+    <text x="521" y="223" text-anchor="middle" fill="var(--p1,#BE123C)">GENERATE</text>
+    <text x="521" y="238" text-anchor="middle" font-size="9.5" font-weight="400" fill="var(--p1,#BE123C)">stochastic</text>
+
+    <rect x="582" y="204" width="98" height="42" rx="8" fill="var(--paper,#FFF)" stroke="var(--p2,#4338CA)" stroke-width="1.3"/>
+    <text x="631" y="223" text-anchor="middle" fill="var(--p2,#4338CA)">VERIFY</text>
+    <text x="631" y="238" text-anchor="middle" font-size="9.5" font-weight="400" fill="var(--muted,#64748B)">by exception</text>
+
+    <rect x="692" y="204" width="106" height="42" rx="8" fill="var(--gA-wash,#ECFDF5)" stroke="var(--gA,#047857)" stroke-width="1.8"/>
+    <text x="745" y="223" text-anchor="middle" fill="var(--gA,#047857)">INTEGRATE</text>
+    <text x="745" y="238" text-anchor="middle" font-size="9.5" font-weight="400" fill="var(--gA,#047857)">deterministic</text>
+  </g>
+  <g stroke="var(--p2,#4338CA)" stroke-width="1.5" marker-end="url(#ar5b)" fill="none" opacity=".7">
+    <path d="M242 225 H250"/><path d="M352 225 H360"/><path d="M462 225 H470"/>
+    <path d="M572 225 H580"/><path d="M682 225 H690"/>
+  </g>
+  <text x="470" y="272" text-anchor="middle" font-size="11" fill="var(--muted,#64748B)">
+    variety is REDUCED ← ← ← · INJECTED · → → → COLLAPSED — the randomness comes to rest at the merge gate</text>
+  <text x="470" y="292" text-anchor="middle" font-size="11.5" font-style="italic" font-weight="600" fill="var(--p2,#4338CA)">
+    surprise at the output is a diagnostic about phases 1–3, never about the model</text>
+
+  <!-- artefacts: the only connection -->
+  <path d="M470 306 V336" stroke="var(--p5,#B45309)" stroke-width="2.2" marker-end="url(#ar5)"/>
+  <rect x="230" y="336" width="480" height="66" rx="10"
+        fill="var(--p5-wash,#FFFBEB)" stroke="var(--p5,#B45309)" stroke-width="1.8"/>
+  <text x="470" y="358" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--p5,#B45309)">
+    ARTEFACTS — the loops' only connection</text>
+  <text x="470" y="376" text-anchor="middle" font-size="11.5" fill="var(--muted,#64748B)">
+    retrieval traces · execution traces · sensor reports · escalations · recurrence counts</text>
+  <text x="470" y="394" text-anchor="middle" font-size="11.5" font-style="italic" fill="var(--p1,#BE123C)">
+    no artefacts → no outer loop. Not a weak one — none.</text>
+  <path d="M230 369 H60 V110" stroke="var(--p5,#B45309)" stroke-width="1.8" fill="none"
+        marker-end="url(#ar5)" opacity=".65"/>
+</svg>
+
+      <figcaption>Figure 5 — SDLC's feedback loop returns to requirements. ADLC's returns to
+      the harness.</figcaption>
+    </figure>
+  </section>
+
+  <section id="ladder">
+    <h2>The autonomy ladder</h2>
+    <p class="lede">A ceiling set by harnessability × blast radius, implemented as
+    capabilities the agent does <em>not</em> hold.</p>
+    <figure class="diagram"><svg viewBox="0 0 940 452" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="The autonomy ladder A0 to A4 and the ceiling matrix set by harnessability and blast radius."
+     font-family="ui-sans-serif, system-ui, -apple-system, sans-serif">
+
+  <text x="20" y="24" font-size="11" letter-spacing="1.6" font-family="ui-monospace, monospace"
+        fill="var(--faint,#94A3B8)">EACH LEVEL IS A SET OF REVOKED CAPABILITIES — NOT A SET OF INSTRUCTIONS</text>
+
+  <!-- the steps -->
+  <g>
+    <rect x="20" y="292" width="150" height="52" rx="9" fill="var(--p2-wash,#EEF2FF)" stroke="var(--p2,#4338CA)" stroke-width="1.6"/>
+    <text x="34" y="314" font-size="15" font-weight="760" font-family="ui-monospace, monospace" fill="var(--p2,#4338CA)">A0</text>
+    <text x="66" y="314" font-size="13" font-weight="640" fill="var(--ink,#0F172A)">Assisted</text>
+    <text x="34" y="333" font-size="10.5" fill="var(--muted,#64748B)">human authors</text>
+
+    <rect x="182" y="238" width="150" height="52" rx="9" fill="var(--p2-wash,#EEF2FF)" stroke="var(--p2,#4338CA)" stroke-width="1.6"/>
+    <text x="196" y="260" font-size="15" font-weight="760" font-family="ui-monospace, monospace" fill="var(--p2,#4338CA)">A1</text>
+    <text x="228" y="260" font-size="13" font-weight="640" fill="var(--ink,#0F172A)">Supervised</text>
+    <text x="196" y="279" font-size="10.5" fill="var(--muted,#64748B)">approval each step</text>
+
+    <rect x="344" y="184" width="150" height="52" rx="9" fill="var(--p5-wash,#FFFBEB)" stroke="var(--p5,#B45309)" stroke-width="2.2"/>
+    <text x="358" y="206" font-size="15" font-weight="760" font-family="ui-monospace, monospace" fill="var(--p5,#B45309)">A2</text>
+    <text x="390" y="206" font-size="13" font-weight="640" fill="var(--ink,#0F172A)">Delegated</text>
+    <text x="358" y="225" font-size="10.5" fill="var(--p5,#B45309)">where the work is</text>
+
+    <rect x="506" y="130" width="150" height="52" rx="9" fill="var(--wash,#F8FAFC)" stroke="var(--faint,#94A3B8)" stroke-width="1.6" stroke-dasharray="5 4"/>
+    <text x="520" y="152" font-size="15" font-weight="760" font-family="ui-monospace, monospace" fill="var(--muted,#64748B)">A3</text>
+    <text x="552" y="152" font-size="13" font-weight="640" fill="var(--muted,#64748B)">Bounded-auto</text>
+    <text x="520" y="171" font-size="10.5" fill="var(--muted,#64748B)">gated by sensors</text>
+
+    <rect x="668" y="76" width="150" height="52" rx="9" fill="var(--wash,#F8FAFC)" stroke="var(--faint,#94A3B8)" stroke-width="1.6" stroke-dasharray="5 4"/>
+    <text x="682" y="98" font-size="15" font-weight="760" font-family="ui-monospace, monospace" fill="var(--muted,#64748B)">A4</text>
+    <text x="714" y="98" font-size="13" font-weight="640" fill="var(--muted,#64748B)">Continuous</text>
+    <text x="682" y="117" font-size="10.5" fill="var(--muted,#64748B)">runs unprompted</text>
+  </g>
+
+  <!-- the closed gate -->
+  <path d="M500 60 L500 300" stroke="var(--p1,#BE123C)" stroke-width="2.4" stroke-dasharray="8 6" opacity=".75"/>
+  <rect x="512" y="290" width="404" height="62" rx="10"
+        fill="var(--p1-wash,#FFF1F2)" stroke="var(--p1,#BE123C)" stroke-width="1.8"/>
+  <text x="530" y="312" font-size="12.5" font-weight="700" fill="var(--p1,#BE123C)">
+    Closed for ordinary feature work</text>
+  <text x="530" y="330" font-size="11.5" fill="var(--muted,#64748B)">
+    The behaviour harness is unsolved, so supervision cannot fall.</text>
+  <text x="530" y="346" font-size="11.5" fill="var(--muted,#64748B)">
+    Reachable today only via near-zero blast radius</text>
+  <text x="530" y="361" font-size="11.5" fill="var(--muted,#64748B)">
+    or mechanical acceptance.</text>
+
+  <!-- ceiling matrix -->
+  <text x="20" y="376" font-size="11" letter-spacing="1.6" font-family="ui-monospace, monospace"
+        fill="var(--faint,#94A3B8)">CEILING = HARNESSABILITY × BLAST RADIUS — NEVER ENTHUSIASM</text>
+
+  <g font-size="12" font-family="ui-monospace, monospace">
+    <text x="150" y="400" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">blast 0</text>
+    <text x="250" y="400" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">blast 1</text>
+    <text x="350" y="400" text-anchor="middle" font-size="10.5" fill="var(--muted,#64748B)">blast 2</text>
+
+    <text x="126" y="422" text-anchor="end" font-size="10.5" fill="var(--muted,#64748B)">harness high</text>
+    <rect x="106" y="406" width="88" height="20" rx="4" fill="var(--gA-wash,#ECFDF5)"/>
+    <text x="150" y="421" text-anchor="middle" font-weight="700" fill="var(--gA,#047857)">A4</text>
+    <rect x="206" y="406" width="88" height="20" rx="4" fill="var(--gA-wash,#ECFDF5)"/>
+    <text x="250" y="421" text-anchor="middle" font-weight="700" fill="var(--gA,#047857)">A3</text>
+    <rect x="306" y="406" width="88" height="20" rx="4" fill="var(--p1-wash,#FFF1F2)"/>
+    <text x="350" y="421" text-anchor="middle" font-weight="700" fill="var(--p1,#BE123C)">A1/A0</text>
+
+    <text x="126" y="444" text-anchor="end" font-size="10.5" fill="var(--muted,#64748B)">harness low</text>
+    <rect x="106" y="428" width="88" height="20" rx="4" fill="var(--p5-wash,#FFFBEB)"/>
+    <text x="150" y="443" text-anchor="middle" font-weight="700" fill="var(--p5,#B45309)">A2</text>
+    <rect x="206" y="428" width="88" height="20" rx="4" fill="var(--p5-wash,#FFFBEB)"/>
+    <text x="250" y="443" text-anchor="middle" font-weight="700" fill="var(--p5,#B45309)">A1</text>
+    <rect x="306" y="428" width="88" height="20" rx="4" fill="var(--p1-wash,#FFF1F2)"/>
+    <text x="350" y="443" text-anchor="middle" font-weight="700" fill="var(--p1,#BE123C)">A0</text>
+  </g>
+
+  <rect x="424" y="382" width="492" height="66" rx="10"
+        fill="var(--wash,#F8FAFC)" stroke="var(--line,#E2E8F0)" stroke-width="1.4"/>
+  <text x="444" y="404" font-size="12.5" font-weight="700" fill="var(--ink,#0F172A)">Blast radius vetoes.</text>
+  <text x="444" y="422" font-size="11.5" fill="var(--muted,#64748B)">
+    No amount of harness quality makes a severe-blast-radius change eligible</text>
+  <text x="444" y="438" font-size="11.5" fill="var(--muted,#64748B)">
+    for autonomy. You reduce the blast radius instead — or accept the ceiling.</text>
+</svg>
+
+      <figcaption>Figure 6 — Blast radius vetoes: no amount of harness quality makes a
+      severe-blast-radius change eligible for autonomy.</figcaption>
+    </figure>
+  </section>
+
+  <section id="chapters">
+    <h2>Chapters</h2>
+    <p class="lede">Five parts, 28 chapters. Each defends one claim and carries graded evidence.</p>
+    
+<div class="part" style="--part:var(--p1)">
+  <div class="part-head">
+    <span class="part-num">PART I</span>
+    <h3>The Discontinuity</h3>
+    <span class="part-note">Why SDLC breaks. Evidence, not assertion.</span>
+  </div>
+  <div class="cards"><a class="card" href="chapters/00-preface.html">
+  <div class="ch-no">CHAPTER 00</div>
+  <h4>Why This Book?</h4>
+  <p>The disagreement about whether AI makes engineers faster is not a measurement problem but a structural fact about where the bottleneck moved.</p>
+  <div class="meta">2812 words</div>
+</a><a class="card" href="chapters/01-two-meanings-of-adlc.html">
+  <div class="ch-no">CHAPTER 01</div>
+  <h4>Two Meanings of ADLC, and Why the Confusion Costs You</h4>
+  <p>The two meanings differ in where the randomness comes to rest — in the shipped product or the construction process — so conflating them produces advice that is actively wrong.</p>
+  <div class="meta">4090 words</div>
+</a><a class="card" href="chapters/02-the-scaffolding-insight.html">
+  <div class="ch-no">CHAPTER 02</div>
+  <h4>The Scaffolding Insight</h4>
+  <p>The interface is a lever with a very large coefficient and an interior optimum — so a harness must be measured rather than accumulated, and must shrink as the model improves.</p>
+  <div class="meta">4257 words</div>
+</a><a class="card" href="chapters/03-the-productivity-paradox.html">
+  <div class="ch-no">CHAPTER 03</div>
+  <h4>The Productivity Paradox</h4>
+  <p>Gains are real and can aggregate, but they relocate work onto review rather than removing it — and every response to that relocation costs lead time, scrutiny, reviewability, or engineering effort.</p>
+  <div class="meta">4806 words</div>
+</a><a class="card" href="chapters/04-the-debt-ledger.html">
+  <div class="ch-no">CHAPTER 04</div>
+  <h4>The Debt Ledger</h4>
+  <p>The ledger is asymmetric in measurability before outcome — and delegation removed the feeling-driven homeostat that regulated code structure for fifty years, which is why a sensor must be installed in its place.</p>
+  <div class="meta">4363 words</div>
+</a><a class="card" href="chapters/05-what-actually-breaks.html">
+  <div class="ch-no">CHAPTER 05</div>
+  <h4>What Actually Breaks</h4>
+  <p>Nobody removed six controls — one thing was withdrawn, the price of writing code, and six goods resting on it fell together. ADLC is the discipline of buying them explicitly.</p>
+  <div class="meta">5077 words</div>
+</a></div>
+</div>
+<div class="part" style="--part:var(--p2)">
+  <div class="part-head">
+    <span class="part-num">PART II</span>
+    <h3>The Four Pillars</h3>
+    <span class="part-note">The engineering core: nested rings of control.</span>
+  </div>
+  <div class="cards"><a class="card" href="chapters/06-context-engineering.html">
+  <div class="ch-no">CHAPTER 06</div>
+  <h4>Context Engineering: the Budget, Not the Bucket</h4>
+  <p>The marginal token can be negative, so every inclusion is a costed choice — which means larger windows increase rather than reduce the need for the discipline, and partial observability must be attacked by findability and structure, not volume.</p>
+  <div class="meta">5159 words</div>
+</a><a class="card" href="chapters/07-harness-engineering-guides-and-sensors.html">
+  <div class="ch-no">CHAPTER 07</div>
+  <h4>Harness Engineering I: Guides and Sensors</h4>
+  <p>Guides assert, sensors observe — and the field has bought assertions over observations at roughly 29:1, concentrating investment in the quadrant's weakest and fastest-depreciating cell.</p>
+  <div class="meta">4506 words</div>
+</a><a class="card" href="chapters/08-harness-engineering-the-steering-loop.html">
+  <div class="ch-no">CHAPTER 08</div>
+  <h4>Harness Engineering II: The Steering Loop</h4>
+  <p>Ashby's constraint means an unbounded generator cannot be comprehensively harnessed, so variety reduction is forced — and the only way to tell a working control from a decorative one is to deliberately produce the failure it exists to prevent.</p>
+  <div class="meta">5883 words</div>
+</a><a class="card" href="chapters/09-graph-engineering.html">
+  <div class="ch-no">CHAPTER 09</div>
+  <h4>Graph Engineering</h4>
+  <p>A graph supplies information no model can be trained into rather than compensating for a capability — so it is the only feedforward guidance that does not age, and the architectural prose filling context files belongs in it.</p>
+  <div class="meta">4963 words</div>
+</a><a class="card" href="chapters/10-structural-engineering.html">
+  <div class="ch-no">CHAPTER 10</div>
+  <h4>Structural Engineering: Parnas and the Harnessable Codebase</h4>
+  <p>Information hiding is the condition under which local inference is sound — but the elegant version overreaches, since nothing bounds what must be known about a reused module, and the mechanism awaits an experiment that would take a week.</p>
+  <div class="meta">5143 words</div>
+</a><a class="card" href="chapters/11-verification-and-security.html">
+  <div class="ch-no">CHAPTER 11</div>
+  <h4>Verification &amp; Security</h4>
+  <p>Injection defeats every control that operates on what an agent believes and cannot defeat one that bounds what it can do — so capability must be scoped by effect, never by name.</p>
+  <div class="meta">5628 words</div>
+</a></div>
+</div>
+<div class="part" style="--part:var(--p3)">
+  <div class="part-head">
+    <span class="part-num">PART III</span>
+    <h3>The Lifecycle</h3>
+    <span class="part-note">Two loops, a ladder, metrics, a maturity path.</span>
+  </div>
+  <div class="cards"><a class="card" href="chapters/12-the-adlc-model.html">
+  <div class="ch-no">CHAPTER 12</div>
+  <h4>The ADLC Model</h4>
+  <p>The outer loop exists because the harness stopped being free and became an artefact — and it must run mechanised, since a regulator sampling 1000× slower than its plant is a historian, not a regulator.</p>
+  <div class="meta">4806 words</div>
+</a><a class="card" href="chapters/13-the-autonomy-ladder.html">
+  <div class="ch-no">CHAPTER 13</div>
+  <h4>The Autonomy Ladder</h4>
+  <p>A ceiling set by harnessability × blast radius, implemented as capabilities the agent does not hold — and since the behaviour harness is unsolved, the honest ceiling for feature work is a re-founded A2.</p>
+  <div class="meta">4729 words</div>
+</a><a class="card" href="chapters/14-metrics-for-delegation.html">
+  <div class="ch-no">CHAPTER 14</div>
+  <h4>Metrics for Delegation</h4>
+  <p>Measure the constraint, not the output — utilisation is unobservable but its consequence is not, and enlarging batches leaves utilisation exactly where it was while destroying reviewability.</p>
+  <div class="meta">4356 words</div>
+</a><a class="card" href="chapters/15-the-maturity-model.html">
+  <div class="ch-no">CHAPTER 15</div>
+  <h4>The Maturity Model</h4>
+  <p>Maturity is which loops are closed, not how much apparatus is installed — and the conventional ladder is sorted by cost of adoption, so nearly everyone holds the one level that unlocks nothing.</p>
+  <div class="meta">3832 words</div>
+</a><a class="card" href="chapters/16-team-topologies-and-review-economics.html">
+  <div class="ch-no">CHAPTER 16</div>
+  <h4>Team Topologies and the Economics of Review</h4>
+  <p>The harness is a public good, so no stream team will fund it — and review by exception only reduces load when the sensor blocks and the reviewer has evidence to stop reading.</p>
+  <div class="meta">4101 words</div>
+</a></div>
+</div>
+<div class="part" style="--part:var(--p4)">
+  <div class="part-head">
+    <span class="part-num">PART IV</span>
+    <h3>The Human Transformation</h3>
+    <span class="part-note">What delegation does to the people doing it.</span>
+  </div>
+  <div class="cards"><a class="card" href="chapters/17-ten-shifts.html">
+  <div class="ch-no">CHAPTER 17</div>
+  <h4>Ten Shifts</h4>
+  <p>Nine of these are one shift seen nine times — a behaviour that was correct while code was expensive — and the five people resist require acting against a signal still being produced.</p>
+  <div class="meta">3415 words</div>
+</a><a class="card" href="chapters/18-calibrated-trust.html">
+  <div class="ch-no">CHAPTER 18</div>
+  <h4>Calibrated Trust</h4>
+  <p>Trust is a decision about how much verification to spend — and it cannot be calibrated introspectively, because the signals that track performance stop tracking it.</p>
+  <div class="meta">3863 words</div>
+</a><a class="card" href="chapters/19-cognitive-offloading.html">
+  <div class="ch-no">CHAPTER 19</div>
+  <h4>Cognitive Offloading</h4>
+  <p>Offloading degrades verification judgment — the faculty the lifecycle leans on hardest and whose feedback signal is disconnected — but the order in which you delegate determines whether the work deposits anything.</p>
+  <div class="meta">3422 words</div>
+</a><a class="card" href="chapters/20-growing-juniors.html">
+  <div class="ch-no">CHAPTER 20</div>
+  <h4>Growing Juniors When the Bottom Rungs Are Automated</h4>
+  <p>Apprenticeship was a by-product of labour arbitrage, not a curriculum — so the group gaining most immediately is the group paying most later, with no internal instrument to tell them.</p>
+  <div class="meta">3679 words</div>
+</a><a class="card" href="chapters/21-anti-patterns.html">
+  <div class="ch-no">CHAPTER 21</div>
+  <h4>Anti-Patterns</h4>
+  <p>Every one is the locally rational response to a documented pressure, and most present as the thing going well — so the remedy is never exhortation.</p>
+  <div class="meta">3690 words</div>
+</a></div>
+</div>
+<div class="part" style="--part:var(--p5)">
+  <div class="part-head">
+    <span class="part-num">PART V</span>
+    <h3>Modes and Practice</h3>
+    <span class="part-note">Placement, adoption, and what remains unsolved.</span>
+  </div>
+  <div class="cards"><a class="card" href="chapters/22-vibe-coding-spec-driven-adlc.html">
+  <div class="ch-no">CHAPTER 22</div>
+  <h4>Vibe Coding, Spec-Driven, and ADLC</h4>
+  <p>Specification and harness are substitutes for the same Ashby constraint, differing in cost structure — so the choice is economic, not philosophical.</p>
+  <div class="meta">3637 words</div>
+</a><a class="card" href="chapters/23-the-prototype-crossing.html">
+  <div class="ch-no">CHAPTER 23</div>
+  <h4>The Prototype Crossing</h4>
+  <p>The crossing changes an artefact's context, not the artefact — so version control is blind to it by construction, yet all four signals are trivially machine-detectable.</p>
+  <div class="meta">2770 words</div>
+</a><a class="card" href="chapters/24-greenfield-vs-legacy.html">
+  <div class="ch-no">CHAPTER 24</div>
+  <h4>Greenfield vs Legacy: the Harnessability Inversion</h4>
+  <p>The inversion is an identity and applies to structure, not sensors — and the two highest-value harnessability components are also the two cheapest to retrofit.</p>
+  <div class="meta">3168 words</div>
+</a><a class="card" href="chapters/25-case-studies.html">
+  <div class="ch-no">CHAPTER 25</div>
+  <h4>Case Studies</h4>
+  <p>Two organisations independently built what this book derives — real corroboration, and survivorship. The quadrant most readers occupy has no published case at all.</p>
+  <div class="meta">3258 words</div>
+</a><a class="card" href="chapters/26-ninety-day-adoption-plan.html">
+  <div class="ch-no">CHAPTER 26</div>
+  <h4>A 90-Day Adoption Plan</h4>
+  <p>Instrument, then constrain, then close the loop once — a sequence forced by dependency that happens to ascend the permission gradient, ending in a funding decision rather than a capability.</p>
+  <div class="meta">3261 words</div>
+</a><a class="card" href="chapters/27-open-problems.html">
+  <div class="ch-no">CHAPTER 27</div>
+  <h4>Open Problems: An Invitation</h4>
+  <p>One problem is genuinely hard; the rest are unbuilt, unrun, or uncollected — so the field's obstacle is not difficulty but the absence of anyone whose job it is.</p>
+  <div class="meta">3138 words</div>
+</a></div>
+</div>
+  </section>
+
+  <section id="appendices">
+    <h2>Appendices</h2>
+    <p class="lede">Reference material — patterns, templates, instrumentation, and the
+    annotated bibliography including what this book rejected.</p>
+    <div class="cards"><a class="card" href="appendices/A-agents-md-patterns.html" style="--part:var(--p3)">
+  <div class="ch-no">APPENDIX A</div>
+  <h4>AGENTS.md Reference Patterns</h4>
+  <div class="meta">1774 words</div>
+</a><a class="card" href="appendices/B-harness-template-starter-kit.html" style="--part:var(--p3)">
+  <div class="ch-no">APPENDIX B</div>
+  <h4>Harness Template Starter Kit</h4>
+  <div class="meta">2005 words</div>
+</a><a class="card" href="appendices/C-autonomy-policy-template.html" style="--part:var(--p3)">
+  <div class="ch-no">APPENDIX C</div>
+  <h4>Autonomy Policy Template</h4>
+  <div class="meta">1722 words</div>
+</a><a class="card" href="appendices/D-metrics-instrumentation-guide.html" style="--part:var(--p3)">
+  <div class="ch-no">APPENDIX D</div>
+  <h4>Metrics Instrumentation Guide</h4>
+  <div class="meta">2264 words</div>
+</a><a class="card" href="appendices/E-annotated-bibliography.html" style="--part:var(--p3)">
+  <div class="ch-no">APPENDIX E</div>
+  <h4>Annotated Bibliography</h4>
+  <div class="meta">2574 words</div>
+</a></div>
+  </section>
+
+  <section id="paths">
+    <h2>Reading paths</h2>
+    <p class="lede">Four ways in, depending on why you are here.</p>
+    <div class="paths"><div class="path"><h4>Shipping software on Monday</h4><div class="seq">21 → 13 → 14 → 26 → 8</div><p>Start with the anti-patterns — you will recognise yourself. Then the ladder, the metrics, the plan.</p></div><div class="path"><h4>Intending to cite this</h4><div class="seq">1 → 3 → 7 → 27</div><p>The boundary that makes the literature searchable, the evidence, the census, the open problems.</p></div><div class="path"><h4>Sceptical any of this is new</h4><div class="seq">2 → 4 → 5</div><p>The controlled comparison, the debt ledger, and what actually broke. If these three do not persuade you, nothing later will.</p></div><div class="path"><h4>Enthusiastic and want slowing down</h4><div class="seq">4 → 18 → 19 → 21</div><p>Persistent complexity, the perception inversion, what offloading costs, and the failure modes.</p></div></div>
+  </section>
+</div>
+</main>
+<footer><div class="wrap">
+  <p><strong>The Agentic Development Lifecycle</strong> — delegated execution under human supervision.<br>
+  Every empirical claim is graded <span class="grade A">[A]</span>
+  <span class="grade B">[B]</span> <span class="grade C">[C]</span>
+  <span class="grade D">[D]</span> and resolves to the citation ledger.</p>
+</div></footer>
+<script>
+(function(){
+  var k='adlc-theme', s=localStorage.getItem(k);
+  if(s) document.documentElement.setAttribute('data-theme',s);
+  var b=document.getElementById('theme-toggle');
+  b&&b.addEventListener('click',function(){
+    var cur=document.documentElement.getAttribute('data-theme');
+    var next = cur==='dark' ? 'light' : cur==='light' ? 'dark'
+      : (window.matchMedia('(prefers-color-scheme: dark)').matches?'light':'dark');
+    document.documentElement.setAttribute('data-theme',next);
+    localStorage.setItem(k,next);
+  });
+})();
+</script>
+</body></html>
