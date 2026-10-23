@@ -19,16 +19,32 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230F172A'/%3E%3Ccircle cx='16' cy='16' r='9.5' fill='none' stroke='%234338CA' stroke-width='2.4'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%230F766E'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="../assets/style.css">
 </head>
-<body class="p2">
+<body class="p2" data-base="../">
+<div class="progress-bar"><div class="progress-fill"></div></div>
 <header class="masthead"><div class="wrap">
   <a class="brand" href="../index.html"><span class="adlc">ADLC</span>The Agentic Development Lifecycle</a>
   <nav class="mast-nav">
     <a href="../index.html#chapters">Chapters</a>
     <a href="../index.html#appendices">Appendices</a>
     <a href="../index.html#paths">Reading paths</a>
-    <button id="theme-toggle" title="Toggle theme">◐</button>
+    <button class="icon-btn" id="search-btn" title="Search (Ctrl+K)">
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+           stroke-width="2"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="15" y2="15"/></svg>
+      <kbd>&#8984;K</kbd></button>
+    <button id="size-toggle" title="Reading size">Aa</button>
+    <button id="theme-toggle" title="Toggle theme">&#9680;</button>
   </nav>
 </div></header>
+
+<div id="search" hidden>
+  <div class="sr-panel" role="dialog" aria-label="Search the book">
+    <input type="search" placeholder="Search chapters, sections, figures&#8230;" autocomplete="off" spellcheck="false">
+    <div class="sr-hint"></div>
+    <div class="sr-list"></div>
+    <div class="sr-foot"><span>&#8593;&#8595; move</span><span>&#8629; open</span>
+      <span>esc close</span><span>&#8592;&#8594; prev / next chapter</span></div>
+  </div>
+</div>
 
 <style>
   body.p2 { --part: var(--p2); --part-wash: var(--p2-wash); --accent: var(--p2);
@@ -52,18 +68,5 @@
   <span class="grade B">[B]</span> <span class="grade C">[C]</span>
   <span class="grade D">[D]</span> and resolves to the citation ledger.</p>
 </div></footer>
-<script>
-(function(){
-  var k='adlc-theme', s=localStorage.getItem(k);
-  if(s) document.documentElement.setAttribute('data-theme',s);
-  var b=document.getElementById('theme-toggle');
-  b&&b.addEventListener('click',function(){
-    var cur=document.documentElement.getAttribute('data-theme');
-    var next = cur==='dark' ? 'light' : cur==='light' ? 'dark'
-      : (window.matchMedia('(prefers-color-scheme: dark)').matches?'light':'dark');
-    document.documentElement.setAttribute('data-theme',next);
-    localStorage.setItem(k,next);
-  });
-})();
-</script>
+<script src="../assets/app.js"></script>
 </body></html>
